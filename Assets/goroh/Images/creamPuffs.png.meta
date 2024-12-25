@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bdcfd344bc0b4954f9898a7a960f06c2
+guid: 8e63f4c565d27434686e5acd3bf5b9e7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: purin_0
+      name: creamPuffs_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 433c5804a1dfade4e980cf52a204b814
-      internalID: -153553166
+      spriteID: d9593865c240dc741ab589d50fce1cba
+      internalID: 73943360
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: purin_1
+      name: creamPuffs_1
       rect:
         serializedVersion: 2
         x: 32
@@ -139,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81e2ba3b597848c4297b7f70d9ad1c44
-      internalID: -698700798
+      spriteID: df6524edf54248e49a78a38a3ba76206
+      internalID: 65536136
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: purin_2
+      name: creamPuffs_2
       rect:
         serializedVersion: 2
         x: 64
@@ -160,14 +160,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18974a324d598294c8e714e3c04567f3
-      internalID: 945225721
+      spriteID: 43e3fcb459796d142b31a945df1fa8d6
+      internalID: 21878910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: purin_3
+      name: creamPuffs_3
       rect:
         serializedVersion: 2
         x: 96
@@ -181,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13915408b489a84419742d17a5b00884
-      internalID: -484959431
+      spriteID: 630a7812aec5bca48babdf43265d254e
+      internalID: 2037746862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: purin_4
+      name: creamPuffs_4
       rect:
         serializedVersion: 2
         x: 128
@@ -202,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9538d97821486b5428d7017b872af622
-      internalID: -315328787
+      spriteID: 17c2c2e8d462f1f468d1359548d70ae1
+      internalID: 433168186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: purin_5
+      name: creamPuffs_5
       rect:
         serializedVersion: 2
         x: 160
@@ -223,50 +223,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ddd4112020bd5f54fb56b137cc05e860
-      internalID: -1367792756
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: purin_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5b8a252a98951854cb87935eee695053
-      internalID: 1685574906
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: purin_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3fb225f746b68f941b93ee641e857762
-      internalID: -56673777
+      spriteID: 67f0345472a7717419567847437e3cb5
+      internalID: 1028255280
       vertices: []
       indices: 
       edges: []
@@ -282,14 +240,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      purin_7: -56673777
-      purin_6: 1685574906
-      purin_0: -153553166
-      purin_2: 945225721
-      purin_1: -698700798
-      purin_3: -484959431
-      purin_4: -315328787
-      purin_5: -1367792756
+      creamPuffs_3: 2037746862
+      creamPuffs_5: 1028255280
+      creamPuffs_0: 73943360
+      creamPuffs_1: 65536136
+      creamPuffs_2: 21878910
+      creamPuffs_4: 433168186
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
