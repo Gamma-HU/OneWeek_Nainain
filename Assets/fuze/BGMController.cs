@@ -8,11 +8,12 @@ public class BGMController : MonoBehaviour
     AudioClip titleBGM,mainGameBGM;
     [SerializeField]
     AudioSource source;
+    AudioSetting setting;
+
     void Start()
     {
         TitleBGM();
     }
-
     public void TitleBGM(){
         source.clip = titleBGM;
         source.Play();

@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class AudioSetting : MonoBehaviour
 {
-    [SerializeField]
-    public float bgmVolume, gameSoundVolume; //配下のBGMCOntroller  やGameSOundCOntrollerから読まれます。
+    AudioSource bgmSource;
+    GameSoundController gameSoundContoroller;
+
     void Awake(){
         DontDestroyOnLoad(gameObject);
     }
     
     void Start()
     {
-        
+        var sources = GetComponentsInChildren<AudioSource>();
+        bgmSource = sources[0];
+        gameSoundContoroller = GetComponentInChildren<GameSoundController>();
     }
 
-    void ChangeBGMVolume(float value){
-        bgmVolume = value;
+    public void ChangeBGMVolume(float value){
+        bgmSource.volume = value;
     }
-    void ChangeGameSoundVolume(float value){
-        gameSoundVolume = value;
+    public void ChangeGameSoundVolume(float value){
+        gameSoundContoroller.volume = value;
     }
 }
