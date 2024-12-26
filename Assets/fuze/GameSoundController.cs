@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class GameSoundController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField]
+    AudioClip shoot1, shoot2, damage, equip, maltiply;
+    [SerializeField]
+    AudioSource source;
+    
+    public float volume;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void Shoot1(){
+        source.PlayOneShot(shoot1, volume);
+    }
+    public void Shoot2(){
+        source.PlayOneShot(shoot2, volume);
+    }
+    public void Damage(){
+        source.PlayOneShot(damage, volume);
+    }
+    public void Equip(){
+        source.PlayOneShot(equip, volume);
+    }
+    public void Maltiply(){
+        source.PlayOneShot(maltiply, volume);
     }
 }
