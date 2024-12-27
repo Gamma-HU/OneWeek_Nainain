@@ -15,4 +15,17 @@ public class Decoration : MonoBehaviour
         public enum rarity { common, rare, superRare }
     }
     [SerializeField] DecoStatus decoStatus;
+
+    public void Init()
+    {
+
+    }
+    public void AddRank()
+    {
+        decoStatus.rank++;
+    }
+
+    public virtual void OnInit() { }
+    public virtual void OnAddRank() { }
+    
 }
