@@ -16,13 +16,15 @@ public class Decoration : MonoBehaviour
     }
     [SerializeField] DecoStatus decoStatus;
 
-    public void Init()
+    public void Init(int rank)
     {
-
+        decoStatus.rank = rank;
+        OnInit();
     }
     public void AddRank()
     {
         decoStatus.rank++;
+        OnAddRank();
     }
 
     public virtual void OnInit() { }
