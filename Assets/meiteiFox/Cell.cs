@@ -21,37 +21,47 @@ public class Cell
     /// </summary>
     /// <param name="leftup">マップの左上</param>
     /// <param name="rightdown">マップの右下</param>
-    public void Initialize(out CellInfo[] cellInfo,Vector3 topLeft, Vector3 bottomRight)
+    public void Initialize(out CellInfo[] cellInfo, out Vector3[] RouteVec, Vector3 topLeft, Vector3 bottomRight)
     {
         int gridSize = 9; // 9マス
         cellInfo = new CellInfo[gridSize * gridSize];
         float xStep = (bottomRight.x - topLeft.x) / (gridSize - 1);
         float yStep = (bottomRight.y - topLeft.y) / (gridSize - 1);
-        for (int i = 0;i < gridSize;i++)
-        {
-            for (int j = 0;j < gridSize; i++)
-            {
-                cellInfo[i * gridSize + j] = new CellInfo();
-                cellInfo[i * gridSize + j].Pos = new Vector3(topLeft.x + j * xStep, topLeft.y + i + yStep);
-                cellInfo[i * gridSize + j].RouteNum = 0;
-            }
-        }
-    }
-    /// <summary>
-    /// ルートをランダムに生成する wip
-    /// </summary>
-    void RouteGen(out CellInfo[] cellInfo)
-    {
-        int gridSize = 9;
-        cellInfo = new CellInfo[gridSize * gridSize];
         for (int i = 0; i < gridSize; i++)
         {
-            for (int j = 0; j < gridSize; i++)
+            for (int j = 0; j < gridSize; j++)
             {
+                cellInfo[i * gridSize + j] = new CellInfo();
+                cellInfo[i * gridSize + j].Pos = new Vector3(topLeft.x + j * xStep, topLeft.y + i * yStep);
                 cellInfo[i * gridSize + j].RouteNum = 0;
             }
         }
-        //適当に設定 wip
+        //Map1
+        RouteVec = new Vector3[22]
+        {
+            cellInfo[1].Pos,
+            cellInfo[10].Pos,
+            cellInfo[19].Pos,
+            cellInfo[28].Pos,
+            cellInfo[37].Pos,
+            cellInfo[38].Pos,
+            cellInfo[39].Pos,
+            cellInfo[40].Pos,
+            cellInfo[31].Pos,
+            cellInfo[22].Pos,
+            cellInfo[23].Pos,
+            cellInfo[24].Pos,
+            cellInfo[25].Pos,
+            cellInfo[34].Pos,
+            cellInfo[43].Pos,
+            cellInfo[52].Pos,
+            cellInfo[61].Pos,
+            cellInfo[70].Pos,
+            cellInfo[69].Pos,
+            cellInfo[68].Pos,
+            cellInfo[67].Pos,
+            cellInfo[76].Pos
+        };
         cellInfo[1].RouteNum = 1;
         cellInfo[10].RouteNum = 2;
         cellInfo[19].RouteNum = 3;
