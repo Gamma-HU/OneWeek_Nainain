@@ -236,9 +236,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shoot1: {fileID: 8300000, guid: b3b6d1e3fa275a04289ed476f14b891b, type: 3}
-  shoot2: {fileID: 8300000, guid: b3b6d1e3fa275a04289ed476f14b891b, type: 3}
-  damage: {fileID: 0}
-  equip: {fileID: 0}
+  shoot2: {fileID: 8300000, guid: 1cd1109c3ad885d4d8f6cfac1bc5b5e7, type: 3}
+  damage: {fileID: 8300000, guid: d3ab1b46bd47e7a42b27eb1fdc4fc6e5, type: 3}
+  equip: {fileID: 8300000, guid: 19f844e4689f2a44e85195e5374b2371, type: 3}
   maltiply: {fileID: 8300000, guid: 453d53a47f304a9409544f7d6e6272b9, type: 3}
   source: {fileID: 4459937250361617299}
   volume: 0
