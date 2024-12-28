@@ -11,8 +11,15 @@ public class AudioSetting : MonoBehaviour
     public TextMeshProUGUI bgmVolumeText;
     public TextMeshProUGUI SEVolumeText;
 
+    public static AudioSetting instance;
     void Awake(){
-        DontDestroyOnLoad(gameObject);
+        if(instance == null){
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else{
+            Destroy(gameObject);
+        }
     }
     
     void Start()

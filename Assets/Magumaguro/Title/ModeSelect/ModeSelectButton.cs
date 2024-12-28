@@ -5,13 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class ModeSelectButton : MonoBehaviour
 {
+    private GameSoundController GSController;
+
+    void Start()
+    {
+        GSController = GameObject.Find("Game Sound").GetComponent<GameSoundController>();
+    }
     public void OnNormalButtonClicked()
     {
         Debug.Log("Normal Button Clicked");
         //ノーマルモードに遷移する
         //一旦仮のシーンへ遷移。後で変更する
         SceneManager.LoadScene("Kari");
-
+        GSController.Maltiply();
     }
 
     public void OnEndlessButtonClicked()
@@ -19,6 +25,8 @@ public class ModeSelectButton : MonoBehaviour
         Debug.Log("Endless Button Clicked");
         //エンドレスモードに遷移する
         //SceneManager.LoadScene("");
+
+        GSController.Maltiply();
 
     }
 }
