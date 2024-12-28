@@ -5,9 +5,42 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour
 {
+    GameManager.EnemyType enemyType;
     public Vector3[] Route;
     public float Speed;
+    public int Hp;
+    public int Level;
     private int currentTargetIndex = 0; // 現在のルートインデックス
+    private void Awake()
+    {
+        switch (enemyType)
+        {
+            case (GameManager.EnemyType)0:
+                Hp = 10 * (int)Mathf.Pow(Level, 2);
+                Speed = 1; 
+                break;
+            case (GameManager.EnemyType)1:
+                Hp = 10 * (int)Mathf.Pow(Level, 2);
+                Speed = 1.5f;
+                break;
+            case (GameManager.EnemyType)2:
+                Hp = 20 * (int)Mathf.Pow(Level, 2);
+                Speed = 1;
+                break;
+            case (GameManager.EnemyType)3:
+                Hp = 15 * (int)Mathf.Pow(Level, 2);
+                Speed = 2;
+                break;
+            case (GameManager.EnemyType)4:
+                Hp = 60 * (int)Mathf.Pow(Level, 2);
+                Speed = 0.8f;
+                break;
+            default:
+                Hp = 10 * (int)Mathf.Pow(Level, 2);
+                Speed = 1;
+                break;
+        }
+    }
     private void Update()
     {
         // ターゲットが存在しない場合は何もしない

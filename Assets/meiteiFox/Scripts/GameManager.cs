@@ -3,27 +3,98 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
+
 public class GameManager : MonoBehaviour
 {
+    public enum GameMode
+    {
+        normal,
+        endless
+    }
+    /// <summary>
+    /// 現在のモードを表示させたい
+    /// </summary>
+    public static GameMode mode = GameMode.normal;
     Cell cell;
     Cell.CellInfo[] cellInfo;
     Vector3[] Route;
     [SerializeField] Transform StartPos, GoalPos, TopLeft, BottomRight;
-    [SerializeField] GameObject Enemy1;
     [SerializeField] float GizmoSize;
+    [SerializeField] GameObject[] WaveList;
+    int currentWave;
+    [SerializeField] GameObject[] EnemyPrefabs;
+    public enum Phase
+    {
+        Preparation,
+        Invasion
+    }
+    public Phase currentPhase;
+    
+    public enum EnemyType
+    {
+        purin,
+        tiramisu,
+        choco,
+        creampuffs,
+        cake
+    };
     void Start()
     {
         cell = new Cell();
         cell.Initialize(out cellInfo, out Route, TopLeft.position, BottomRight.position);
         Route = AddStartAndGoal(StartPos.position,GoalPos.position,Route);
-
-        //テスト
         WaveStart(1);
+    }
+    private void TogglePhase()
+    {
+        if (currentPhase == Phase.Preparation)
+        {
+            currentPhase = Phase.Invasion;
+            StartCoroutine(Invasion());
+            Debug.Log("Switched to Invasion Phase");
+        }
+        else
+        {
+            currentPhase = Phase.Preparation;
+            if (mode == GameMode.normal && currentWave == 20)
+            {
+
+            } else
+            {
+                WaveStart(currentWave + 1);
+            }
+            Debug.Log("Switched to Preparation Phase");
+        }
     }
     public void WaveStart(int wave)
     {
-        GameObject enemy = Instantiate(Enemy1, StartPos.position, Quaternion.identity);
+        currentPhase = Phase.Preparation;
+        currentWave = wave;
+        //waveスタートのアニメーションもつけたい
+    }
+    public void Sinryaku_Start()
+    {
+        if (currentPhase != Phase.Invasion)
+        {
+            TogglePhase();
+        }
+    }
+    IEnumerator Invasion()
+    {
+        EnemyWave[] enemyWaves =  WaveList[currentWave - 1].GetComponent<Waves>().waves.ToArray();
+        for (int i = 0; i < enemyWaves.Length; i++)
+        {
+            yield return new WaitForSeconds(enemyWaves[i].spawnSec);
+            EnemyGen((int)enemyWaves[i].enemyType, enemyWaves[i].level);
+        }
+        TogglePhase();
+    }
+    void EnemyGen(int enemyIndex, int enemylevel)
+    {
+        GameObject enemy = Instantiate(EnemyPrefabs[enemyIndex], Route[0], Quaternion.identity);
         enemy.GetComponent<Enemy>().Route = Route;
+        enemy.GetComponent<Enemy>().Level = enemylevel;
+
     }
 
     // Vector3配列の最初と最後にStartPos, GoalPosを追加する関数
