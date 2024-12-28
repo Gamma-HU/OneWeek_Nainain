@@ -22,7 +22,7 @@ public class TitleLogoController : MonoBehaviour
         //Appendで動作を追加していく
         /*sequence.Append(this.transform.DOMoveY(2f, 2f).SetEase(Ease.OutBounce));
         sequence.Append(this.transform.DORotate(new Vector3(0, 0, amplitude), 1f, RotateMode.Fast).SetLoops(-1, LoopType.Yoyo));*/
-        tween_1 = this.transform.DOMoveY(2f, 2f).SetEase(Ease.OutBounce).SetAutoKill(true);
+        tween_1 = this.transform.DOMoveY(1.5f, 2f).SetEase(Ease.OutBounce).SetAutoKill(true);
         tween_2 = this.transform.DORotate(new Vector3(0, 0, amplitude), 2f, RotateMode.Fast).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo).SetAutoKill(true);
 
         //Playで実行
