@@ -183,9 +183,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d71a8829c2111e4aa689eff5a5a0a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 1
   manjuPos:
   - {x: -3.8, y: 0.7}
   manju: {fileID: 2423933192439216986, guid: 3b87b7f2f9153b74db5438c35a118af6, type: 3}
+  equip: {fileID: 5302194670483044208, guid: a5e36f8a3474a844e90e8127ccd6069d, type: 3}
   enemyTest:
   - {fileID: 938664528}
   - {fileID: 2094920738}

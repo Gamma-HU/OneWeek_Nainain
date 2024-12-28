@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,12 +17,19 @@ public class Kurimanju : MonoBehaviour
         [Header("=range_base x range_mul(%)")] public float range;
         public Vector2 position;
 
-        public ManjuStatus(Vector2 pos)
+        public void Init(Vector2 pos)
         {
             ATK = (ATK_base * ATK_mul / 100f).ToInt();
             range = range_base * range_mul / 100f;
 
             position = pos;
+        }
+
+        public void AddRange(float add_base,float add_mul)
+        {
+            range_base += add_base;
+            range_mul += add_mul;
+            range = range_base * range_mul / 100f;
         }
     }
 
@@ -49,7 +55,8 @@ public class Kurimanju : MonoBehaviour
     /// <summary>生成時(=配置時に呼ばれる)</summary>
     public void Init(Vector2 pos, List<DecorationParams> decos)
     {
-        status.position = pos;
+
+        status.Init(pos);
         Instantiate(smoke, transform);
         normalAttacks = new List<Attack>();
         AddNormalAttack(attack);//デフォルトの通常攻撃をプールに追加
@@ -71,26 +78,28 @@ public class Kurimanju : MonoBehaviour
         }
     }
 
-    public void Equip(GameObject deco)
+    public void Equip(GameObject deco,int rank)
     {
         for (int i= 0;i<decorations.Count;i++)
         {
             if (decorations[i].decoData == deco)//すでに装備済みのデコレーションの場合はランク上昇
             {
-                decorations[i].AddRank();
-            }
-            else//新しい装飾品の場合は新規生成
-            {
-                DecorationParams newDeco = new DecorationParams();
-                newDeco.decoData = deco;
-                newDeco.rank = 1;
-                var d = Instantiate(deco, transform);
-                d.GetComponent<Decoration>().Init(this);
-                newDeco.instance = d.GetComponent<Decoration>();
-
-                decorations.Add(newDeco);
+                Debug.Log($"装飾品<{decorations[i].instance.Status().decoName}>のランクを上昇");
+                decorations[i].AddRank(rank);
+                return;
             }
         }
+
+        //新しい装備の際は新規作成
+        DecorationParams newDeco = new DecorationParams();
+        newDeco.decoData = deco;
+        newDeco.rank = rank;
+        var d = Instantiate(deco, transform);
+        d.GetComponent<Decoration>().Init(this, rank);
+        newDeco.instance = d.GetComponent<Decoration>();
+
+        Debug.Log($"新たな装飾品<{newDeco.instance.Status().decoName}>を装備");
+        decorations.Add(newDeco);
     }
 
     public void AddNormalAttack(Attack atk)
@@ -116,6 +125,9 @@ public class Kurimanju : MonoBehaviour
 
     private void Update()
     {
+        Vector2 origin = transform.position;
+        Vector2 direction = new Vector2(1, 0);
+        Debug.DrawRay(origin, direction * status.range, Color.red);
         if (active)//wave中なら
         {
             if (target == null)//ターゲットが存在しないなら
@@ -211,10 +223,10 @@ public class DecorationParams
     public Decoration instance;//インスタンス化したマネージャーのスクリプト情報
     public int rank;
 
-    public void AddRank()
+    public void AddRank(int add)
     {
-        rank++;
-        instance.AddRank();
+        rank+=add;
+        instance.AddRank(add);
     }
 
     public void SetInstance(Decoration i)

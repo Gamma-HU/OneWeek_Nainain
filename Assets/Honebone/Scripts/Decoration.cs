@@ -14,25 +14,26 @@ public class Decoration : MonoBehaviour
         public int rank = 1;
         public enum rarity { common, rare, superRare }
     }
-    [SerializeField] DecoStatus decoStatus;
+    [SerializeField]protected DecoStatus decoStatus;
+    public DecoStatus Status() { return decoStatus; }
 
     protected Kurimanju manju;
 
-    public void Init(Kurimanju m,int rank = 1)
+    public void Init(Kurimanju m,int rank)
     {
         manju = m;
         decoStatus.rank = rank;
         OnInit();
     }
-    public void AddRank()
+    public void AddRank(int add)
     {
-        decoStatus.rank++;
-        OnAddRank();
+        decoStatus.rank += add;
+        OnAddRank(add);
     }
 
     public virtual void OnAttack(Enemy target,Attack atk,bool normalATK) { }
 
     public virtual void OnInit() { }
-    public virtual void OnAddRank() { }
+    public virtual void OnAddRank(int add) { }
     
 }

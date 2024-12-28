@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Honebone_Test : MonoBehaviour
 {
+    public bool debug;
     [SerializeField] List<Vector2> manjuPos;
     [SerializeField] GameObject manju;
+    [SerializeField] GameObject equip;
     [SerializeField] List<Enemy> enemyTest;
     public static Honebone_Test instance;
+
+    List<Kurimanju> majuList = new List<Kurimanju>();
 
     private void Awake()
     {
@@ -21,8 +25,18 @@ public class Honebone_Test : MonoBehaviour
             var m = Instantiate(manju, pos, Quaternion.identity);
             m.GetComponent<Kurimanju>().Init(pos,new List<DecorationParams>());
             m.GetComponent<Kurimanju>().StartBattle();
-            
+            majuList.Add(m.GetComponent<Kurimanju>());
         }
+    }
+    private void Update()
+    {
+        if (debug)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                majuList[0].Equip(equip, 1);
+            }
+        }    
     }
 
     public Enemy GetEnemy()
