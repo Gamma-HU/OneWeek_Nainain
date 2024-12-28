@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class AudioSetting : MonoBehaviour
@@ -27,6 +29,15 @@ public class AudioSetting : MonoBehaviour
         var sources = GetComponentsInChildren<AudioSource>();
         bgmSource = sources[0];
         gameSoundContoroller = GetComponentInChildren<GameSoundController>();
+        SceneManager.sceneLoaded += SceneLoaded;
+    }
+
+    void SceneLoaded (Scene nextScene, LoadSceneMode mode) {
+        if(nextScene.name == "Title"){
+            Slider[] sliders = FindObjectsOfType<Slider>();
+            sliders[0].onValueChanged.AddListener(ChangeBGMVolume);
+            sliders[1].onValueChanged.AddListener(ChangeGameSoundVolume);
+        }
     }
 
     public void ChangeBGMVolume(float value){
