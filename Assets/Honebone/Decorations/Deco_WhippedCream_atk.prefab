@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 247920378017368273}
   - component: {fileID: 307004467475421864}
-  - component: {fileID: 7714976708323919946}
+  - component: {fileID: 4310866212729279344}
   - component: {fileID: 4752215170866578090}
   m_Layer: 0
   m_Name: Deco_WhippedCream_atk
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7714976708323919946
+--- !u!114 &4310866212729279344
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7663961578913621665}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57927cb0066a3054aba6f3c8ad2d3664, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e638e6f42f0214419b05cac9afc39ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!58 &4752215170866578090

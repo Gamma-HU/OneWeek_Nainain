@@ -83,12 +83,12 @@ public class Projectile : MonoBehaviour
                 hitCount++;
                 hitEnemies.Add(collision.GetInstanceID());
                 Enemy hit = collision.GetComponent<Enemy>();
-                //Enemy.EnemyStatus enemyStatus = hit.GetEnemyStatus();//攻撃処理
-                OnHit(hit);
+                Honemy honehit= collision.GetComponent<Honemy>();
+                OnHit(honehit);
 
                 //攻撃者の攻撃力 x (100+攻撃のダメージ補正)%　が最終ダメージ
-                int DMG = (attacker.Status().ATK * (100f + attack.DMGMod / 100f)).ToInt();
-
+                int DMG = (attacker.Status().ATK * ((100f + attack.DMGMod) / 100f)).ToInt();
+                honehit.Damage(DMG);//攻撃処理
 
                 //hit.Damage(DMG, attacker.transform, execute);
                 if (hitCount >= attack.penetration + 1 && !attack.infinitePenetration)//ヒット数が貫通数+1より多くなり、無限に貫通しないなら
@@ -100,5 +100,5 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public virtual void OnHit(Enemy hit) { }
+    public virtual void OnHit(Honemy hit) { }
 }
