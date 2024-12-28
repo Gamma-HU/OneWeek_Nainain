@@ -187,7 +187,7 @@ MonoBehaviour:
   manjuPos:
   - {x: -3.8, y: 0.7}
   manju: {fileID: 2423933192439216986, guid: 3b87b7f2f9153b74db5438c35a118af6, type: 3}
-  equip: {fileID: 5302194670483044208, guid: a5e36f8a3474a844e90e8127ccd6069d, type: 3}
+  equip: {fileID: 5302194670483044208, guid: 464dc93509593b64eab732f70a00f2da, type: 3}
   enemyTest:
   - {fileID: 938664528}
   - {fileID: 2094920738}
