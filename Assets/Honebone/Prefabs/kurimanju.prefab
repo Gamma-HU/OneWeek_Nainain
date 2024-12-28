@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status:
-    ATK_base: 1
+    ATK_base: 10
     range_base: 2
     AS_base: 1
     ATK_mul: 100
@@ -128,10 +128,13 @@ MonoBehaviour:
   - decoData: {fileID: 5302194670483044208, guid: 5e0cacb95cea70745bff9e8f1abe479f, type: 3}
     instance: {fileID: 0}
     rank: 1
-  - decoData: {fileID: 5302194670483044208, guid: e4e3b481f734e664e94d3b05d9871354, type: 3}
+  - decoData: {fileID: 5302194670483044208, guid: d1f746d817e21dc418a731e32b3fbdf4, type: 3}
     instance: {fileID: 0}
     rank: 1
   - decoData: {fileID: 5302194670483044208, guid: dbdb451f4450fe4479079aaa1c3f8888, type: 3}
+    instance: {fileID: 0}
+    rank: 1
+  - decoData: {fileID: 5302194670483044208, guid: 7a455e10664cdf5429058ebba8ae5b2f, type: 3}
     instance: {fileID: 0}
     rank: 1
   smoke: {fileID: 9206898335192646768, guid: 29d419ca8d9318f459c6b9aaf9d25996, type: 3}

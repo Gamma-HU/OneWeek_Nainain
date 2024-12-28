@@ -141,7 +141,7 @@ public class Kurimanju : MonoBehaviour
         Debug.DrawRay(origin, direction * status.range, Color.red);
         if (active)//wave中なら
         {
-            if (target == null)//ターゲットが存在しないなら
+            if (target == null||!target.GetComponent<Honemy>().CheckAlive())//ターゲットが存在しないなら
             {
                 SetTarget();
             }

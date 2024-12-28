@@ -27,6 +27,11 @@ public class Honebone_Test : MonoBehaviour
             m.GetComponent<Kurimanju>().StartBattle();
             majuList.Add(m.GetComponent<Kurimanju>());
         }
+
+        foreach(Enemy enemy in enemyTest)
+        {
+            enemy.GetComponent<Honemy>().Init();
+        }
     }
     private void Update()
     {
@@ -39,9 +44,15 @@ public class Honebone_Test : MonoBehaviour
         }    
     }
 
+    public void RemoveEnemy(Enemy enemy)
+    {
+        enemyTest.Remove(enemy);
+    }
+
     public Enemy GetEnemy()
     {
-        return enemyTest[0];
+        if (enemyTest.Count > 0) { return enemyTest[0]; }
+        return null;
     }
     public List<Enemy> GetEnemies() { return enemyTest; }
 }
