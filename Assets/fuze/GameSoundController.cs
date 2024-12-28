@@ -9,7 +9,7 @@ public class GameSoundController : MonoBehaviour
     [SerializeField]
     AudioSource source;
     
-    public float volume;
+    public float volume = 1.0f;
 
     void Start()
     {
