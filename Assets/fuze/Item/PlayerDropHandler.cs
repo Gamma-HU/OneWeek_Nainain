@@ -25,6 +25,7 @@ public class PlayerDropHandler: MonoBehaviour, IDropHandler  // 継承する
         GameObject droppedObject = eventData.pointerDrag;
         if (droppedObject != null)
         {
+            Debug.Log("!!!!!!!!!!!!");
             if(droppedObject.name == "Nainain"){
                 OnNainainDropEvent.Invoke();
             }else if(droppedObject.name == "Sanbain"){

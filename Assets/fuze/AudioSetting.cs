@@ -35,8 +35,8 @@ public class AudioSetting : MonoBehaviour
     void SceneLoaded (Scene nextScene, LoadSceneMode mode) {
         if(nextScene.name == "Title"){
             Slider[] sliders = FindObjectsOfType<Slider>(true);
-            sliders[0].onValueChanged.AddListener(ChangeBGMVolume);
-            sliders[1].onValueChanged.AddListener(ChangeGameSoundVolume);
+            sliders[1].onValueChanged.AddListener(ChangeBGMVolume);
+            sliders[0].onValueChanged.AddListener(ChangeGameSoundVolume);
         }
     }
 
