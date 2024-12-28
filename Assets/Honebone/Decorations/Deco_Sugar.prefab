@@ -46,14 +46,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decoStatus:
-    decoName: 
-    decoInfo: 
+    decoName: "\u7802\u7CD6"
+    decoInfo: "\u901A\u5E38\u653B\u6483\u3059\u308B\u3068\u304D\u3001\u30E9\u30F3\u30C0\u30E0\u306A\u65752\u4F53\u306B\u8FFD\u52A0\u653B\u6483\u3092\u3059\u308B"
     flavorText: 
     canStack: 0
     rank: 1
   attack:
     projectile: {fileID: 7663961578913621665, guid: 147791f97ea81114fbf6b2d6837010f1, type: 3}
     DMGMod: -50
+    weight: 0
     followTargetSpeed: 0
     followCurrentTarget: 0
     pellets: 1

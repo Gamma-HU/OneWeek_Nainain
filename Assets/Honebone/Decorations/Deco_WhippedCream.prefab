@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decoStatus:
-    decoName: 
-    decoInfo: 
+    decoName: "\u30DB\u30A4\u30C3\u30D7\u30AF\u30EA\u30FC\u30E0"
+    decoInfo: "\u901A\u5E38\u653B\u6483\u304C\u3001\u305F\u307E\u306B\u6575\u306E\u901F\u5EA6\u3092\u9045\u3089\u305B\u308B\u5F3E\u306B\u5909\u308F\u308B"
     flavorText: 
     canStack: 0
     rank: 1
