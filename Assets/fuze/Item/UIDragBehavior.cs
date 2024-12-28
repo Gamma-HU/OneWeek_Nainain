@@ -6,50 +6,50 @@ using UnityEngine.EventSystems;
 
 public class UIDragBehavior : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+  [SerializeField]
+  private UnityEngine.Events.UnityEvent OnItemUsed;  // これでアイテムを減らす処理をする。
+  [SerializeField]
+  string playerTagName = "Player";  // 自機を判別するためのタグ
+  [SerializeField]
+  public GameObject hontai;  // ※栗饅頭の合成用のUIだけが必要とする。
 
-    Vector2 prevPos; //保存しておく初期position
+  Vector2 prevPos; //保存しておく初期position
+  RectTransform parentRectTransform; // 移動したいオブジェクトの親(Panel)のRectTransform
+  ItemStock  itemStock;
+  
 
-    RectTransform parentRectTransform; // 移動したいオブジェクトの親(Panel)のRectTransform
+  // ドラッグ開始時の処理
+  public void OnBeginDrag(PointerEventData eventData)
+  {
+    // ドラッグ前の位置を記憶しておく
+    prevPos = transform.position;
+  }
 
-    ItemStock  itemStock;
-    [SerializeField]string playerTagName;
-    [SerializeField]int itemType;
+  // ドラッグ中の処理
+  public void OnDrag(PointerEventData eventData)
+  {
+    // オブジェクトの位置をworldPositionに変更する
+    Vector2 worldPosition = Camera.main.ScreenToWorldPoint(eventData.position);
+    transform.position = worldPosition;
+  }
+
+  // ドラッグ終了時の処理
+  public void OnEndDrag(PointerEventData eventData) {
     
-    private void Start()
+    transform.position = prevPos;
+    Vector3 mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    mousePoint.z = 0;
+
+    List<RaycastResult> RayResult= new List<RaycastResult>(); 
+    EventSystem.current.RaycastAll(eventData , RayResult);
+    foreach (RaycastResult result in RayResult)
     {
-      itemStock = GetComponentInParent<ItemStock>();
-    }
-
-    // ドラッグ開始時の処理
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        // ドラッグ前の位置を記憶しておく
-        prevPos = transform.position;
-    }
-
-    // ドラッグ中の処理
-    public void OnDrag(PointerEventData eventData)
-    {
-        // オブジェクトの位置をworldPositionに変更する
-        Vector2 worldPosition = Camera.main.ScreenToWorldPoint(eventData.position);
-        transform.position = worldPosition;
-    }
-
-    // ドラッグ終了時の処理
-    public void OnEndDrag(PointerEventData eventData) {
-      
-      transform.position = prevPos;
-      Vector3 MousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-      MousePoint.z = 0;
-
-      //マウスのある位置から、奥(0, 0, 1)に向かってRayを発射（ワールド座標）
-      RaycastHit2D[] hit2D = Physics2D.RaycastAll(MousePoint , Vector3.forward);
-      foreach(RaycastHit2D hit in hit2D){
-
-        if(hit.transform.gameObject.tag == playerTagName){
-          Debug.Log("ItemUsed");
-        }
+      //Debug.Log("raycastresult"+result.gameObject.tag);
+      if(result.gameObject.tag == playerTagName){
+        Debug.Log("Used!!");
+        OnItemUsed.Invoke();
       }
     }
+  }
 
 }

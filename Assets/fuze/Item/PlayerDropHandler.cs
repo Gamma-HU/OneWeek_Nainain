@@ -25,14 +25,13 @@ public class PlayerDropHandler: MonoBehaviour, IDropHandler  // 継承する
         GameObject droppedObject = eventData.pointerDrag;
         if (droppedObject != null)
         {
-            Debug.Log("!!!!!!!!!!!!");
             if(droppedObject.name == "Nainain"){
                 OnNainainDropEvent.Invoke();
             }else if(droppedObject.name == "Sanbain"){
                 OnSanbainDropEvent.Invoke();
             }else if(droppedObject.name == "KurimanjuGouseiUI"){
                 OnOtherKurimanjuUIDropEvent.Invoke();
-                GouseiEvent.Invoke(droppedObject.GetComponent<KurimanjuUIState>().KurimanjuHonati);
+                GouseiEvent.Invoke(droppedObject.GetComponent<UIDragBehavior>().hontai);
             }
         }
     }
