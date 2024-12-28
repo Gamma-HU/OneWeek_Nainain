@@ -29,7 +29,17 @@ public class Kurimanju : MonoBehaviour
 
     [SerializeField] ManjuStatus status;
     [SerializeField,Header("通常攻撃情報")] public Attack attack;
+
+    List<Attack> normalAttacks=new List<Attack>();
+    List<int> attackWeight = new List<int>();
+
+    //SerializeFieldとしているのは、デバッグ時に最初から装備品を待たせたいから
+    [SerializeField] List<DecorationParams> decorations;
+
     [SerializeField] GameObject smoke;
+
+    public ManjuStatus Status() { return status; }
+
     Enemy target;
     //public struct DecoParams
 
@@ -37,12 +47,57 @@ public class Kurimanju : MonoBehaviour
     float timer;
 
     /// <summary>生成時(=配置時に呼ばれる)</summary>
-    public void Init(Vector2 pos)
+    public void Init(Vector2 pos, List<DecorationParams> decos)
     {
         status.position = pos;
         Instantiate(smoke, transform);
+        normalAttacks = new List<Attack>();
+        AddNormalAttack(attack);//デフォルトの通常攻撃をプールに追加
+
+        //foreach (DecorationParams deco in decos)
+        //{
+        //    DecorationParams d = new DecorationParams();//与えられた装飾品をコピーして自身に追加
+        //    d.rank = deco.rank;
+        //    d.decoData = deco.decoData;
+        //    decorations.Add(d);
+        //}
+        decorations.AddRange(new List<DecorationParams>(decos));
+
+        for (int i = 0; i < decorations.Count; i++)//装飾品をインスタンス化
+        {
+            var d = Instantiate(decorations[i].decoData, transform);
+            d.GetComponent<Decoration>().Init(this, decorations[i].rank);
+            decorations[i].instance = d.GetComponent<Decoration>();
+        }
     }
 
+    public void Equip(GameObject deco)
+    {
+        for (int i= 0;i<decorations.Count;i++)
+        {
+            if (decorations[i].decoData == deco)//すでに装備済みのデコレーションの場合はランク上昇
+            {
+                decorations[i].AddRank();
+            }
+            else//新しい装飾品の場合は新規生成
+            {
+                DecorationParams newDeco = new DecorationParams();
+                newDeco.decoData = deco;
+                newDeco.rank = 1;
+                var d = Instantiate(deco, transform);
+                d.GetComponent<Decoration>().Init(this);
+                newDeco.instance = d.GetComponent<Decoration>();
+
+                decorations.Add(newDeco);
+            }
+        }
+    }
+
+    public void AddNormalAttack(Attack atk)
+    {
+        normalAttacks.Add(atk);
+        attackWeight.Add(atk.weight);
+    }
 
 
     /// <summary>ウェーブ開始</summary>
@@ -72,10 +127,8 @@ public class Kurimanju : MonoBehaviour
                 timer += Time.deltaTime;
                 if (timer >= (1f / status.attackSpeed))//通常攻撃
                 {
-                    Debug.Log("attack");
-
                     timer -= (1f / status.attackSpeed);
-                    Attack(target, attack);//現在対象としている敵に通常攻撃
+                    Attack(target, normalAttacks[attackWeight.ChoiceWithWeight()], true);//現在対象としている敵に通常攻撃                    
                 }
             }
         }
@@ -90,7 +143,7 @@ public class Kurimanju : MonoBehaviour
     /// </summary>
     /// <param name="tar">攻撃対象</param>
     /// <param name="atk">攻撃情報</param>
-    public void Attack(Enemy tar, Attack atk)//攻撃
+    public void Attack(Enemy tar, Attack atk,bool normalAttack=false)//攻撃
     {
         //if (status.turretData.SE_Fire != null) { soundManager.PlaySE(transform.position, status.turretData.SE_Fire); }
         if (atk.pellets == 0) { Debug.Log("発射弾数が0です！"); }
@@ -115,12 +168,21 @@ public class Kurimanju : MonoBehaviour
             pjtl.GetComponent<Projectile>().Init(this, tar, atk);
             pjtl.transform.Rotate(new Vector3(0, 0, 1), spread);//拡散分回転させる
         }
+
+        foreach(DecorationParams decorationParams in decorations)
+        {
+            decorationParams.instance.OnAttack(tar, atk, normalAttack);
+        }
     }
 }
 [System.Serializable]
 public struct Attack
 {
     public GameObject projectile;
+
+    [Header("ダメージ補正値(%)")] public float DMGMod;
+    [Header("(通常攻撃にのみ関連)\n通常攻撃時、これが選ばれる重み")] public int weight;
+
 
     [Header("ターゲットを追尾するか/方向転換速度")] public float followTargetSpeed;
     [Header("現在のプレイヤーの位置を追尾するか falseなら発射時の場所へ")] public bool followCurrentTarget;
@@ -139,4 +201,25 @@ public struct Attack
     public bool infinitePenetration;
     public int penetration;
     public float projectileDuration;
+}
+
+//饅頭の装備状況
+[System.Serializable]
+public class DecorationParams
+{
+    public GameObject decoData;//プレハブの情報
+    public Decoration instance;//インスタンス化したマネージャーのスクリプト情報
+    public int rank;
+
+    public void AddRank()
+    {
+        rank++;
+        instance.AddRank();
+    }
+
+    public void SetInstance(Decoration i)
+    {
+        Debug.Log("ok");
+        instance = i;
+    }
 }

@@ -6,7 +6,7 @@ public class Honebone_Test : MonoBehaviour
 {
     [SerializeField] List<Vector2> manjuPos;
     [SerializeField] GameObject manju;
-    [SerializeField] Enemy enemyTest;
+    [SerializeField] List<Enemy> enemyTest;
     public static Honebone_Test instance;
 
     private void Awake()
@@ -19,7 +19,7 @@ public class Honebone_Test : MonoBehaviour
         foreach(Vector2 pos in manjuPos)
         {
             var m = Instantiate(manju, pos, Quaternion.identity);
-            m.GetComponent<Kurimanju>().Init(pos);
+            m.GetComponent<Kurimanju>().Init(pos,new List<DecorationParams>());
             m.GetComponent<Kurimanju>().StartBattle();
             
         }
@@ -27,6 +27,7 @@ public class Honebone_Test : MonoBehaviour
 
     public Enemy GetEnemy()
     {
-        return enemyTest;
+        return enemyTest[0];
     }
+    public List<Enemy> GetEnemies() { return enemyTest; }
 }
