@@ -18,9 +18,9 @@ public class HoneManju : MonoBehaviour
         public float range_mul = 100f;
         [Header("=ATK_base x ATK_mul(%)")] public int ATK;
         [Header("=range_base x range_mul(%)")] public float range;
-        Vector2Int position;
+        Vector2 position;
 
-        public ManjuStatus(Vector2Int pos)
+        public ManjuStatus(Vector2 pos)
         {
             ATK = (ATK_base * ATK_mul / 100f).ToInt();
             range = range_base * range_mul / 100f;
@@ -29,15 +29,18 @@ public class HoneManju : MonoBehaviour
         }
     }
     [SerializeField] ManjuStatus status;
+    [SerializeField] GameObject smoke;
     Enemy target;
     //public struct DecoParams
 
     bool active = false;//ウェーブ中のみtrue
     float timer;
 
-    public void Init(Vector2Int pos)
+    /// <summary>生成時(=配置時に呼ばれる)</summary>
+    public void Init(Vector2 pos)
     {
         status = new ManjuStatus(pos);
+        Instantiate(smoke, transform);
     }
 
     
@@ -77,7 +80,7 @@ public class HoneManju : MonoBehaviour
 
     void SetTarget()//ターゲット設定
     {
-        //生成した敵を管理してるスクリプトから、攻撃範囲内にいて先頭にいる敵を取得
+        target = Honebone_Test.instance.GetEnemy();
     }
     void Attack()//攻撃
     {

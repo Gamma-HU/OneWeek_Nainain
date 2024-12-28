@@ -621,7 +621,6 @@ GameObject:
   - component: {fileID: 7828798325255555524}
   - component: {fileID: 559826243388357707}
   - component: {fileID: 5921228298519631787}
-  - component: {fileID: 6277123582860772584}
   m_Layer: 5
   m_Name: Gousei
   m_TagString: Untagged
@@ -687,20 +686,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6277123582860772584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5929484611942164276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cd5330483efd424d8388029fa8a4ac9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerTagName: Player
-  itemType: 2
 --- !u!1 &6072475425396636952
 GameObject:
   m_ObjectHideFlags: 0
