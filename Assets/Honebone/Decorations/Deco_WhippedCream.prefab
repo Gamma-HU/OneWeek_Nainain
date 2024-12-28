@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 133166121128002862}
-  - component: {fileID: -4922088754300905207}
+  - component: {fileID: 2893408833969240172}
   - component: {fileID: 5866479890358183626}
   m_Layer: 0
   m_Name: Deco_WhippedCream
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4922088754300905207
+--- !u!114 &2893408833969240172
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,18 +42,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 5302194670483044208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6573e1a47c55f3846bf62740430e72f4, type: 3}
+  m_Script: {fileID: 11500000, guid: de3d6e6a49b6eb34ead344101d600ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   decoStatus:
     decoName: "\u30DB\u30A4\u30C3\u30D7\u30AF\u30EA\u30FC\u30E0"
-    decoInfo: "\u901A\u5E38\u653B\u6483\u304C\u3001\u305F\u307E\u306B\u6575\u306E\u901F\u5EA6\u3092\u9045\u3089\u305B\u308B\u5F3E\u306B\u5909\u308F\u308B"
+    decoInfo: "\u901A\u5E38\u653B\u6483\u6642\u3001\u305F\u307E\u306B\u6575\u306E\u901F\u5EA6\u3092\u9045\u3089\u305B\u308B\u5F3E\u306B\u5909\u308F\u308B"
     flavorText: 
     canStack: 0
     rank: 1
+    rarity: 0
+  chance: 50
   attack:
     projectile: {fileID: 7663961578913621665, guid: 20bae1ef05f7766429129b04572bf260, type: 3}
-    DMGMod: 0
+    targetType: 0
+    DMGMod: -40
     weight: 100
     followTargetSpeed: 0
     followCurrentTarget: 0

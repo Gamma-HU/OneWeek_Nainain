@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 133166121128002862}
-  - component: {fileID: 8107262923448926107}
+  - component: {fileID: 1787183249984637335}
   - component: {fileID: 5866479890358183626}
   m_Layer: 0
-  m_Name: Deco_BambooStick
+  m_Name: Deco_StrawBerry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8107262923448926107
+--- !u!114 &1787183249984637335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,17 +42,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 5302194670483044208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 935aa22ee51813c43abc4f09b1dcdfe0, type: 3}
+  m_Script: {fileID: 11500000, guid: de3d6e6a49b6eb34ead344101d600ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   decoStatus:
-    decoName: "\u7AF9\u4E32"
-    decoInfo: "\u653B\u6483\u7BC4\u56F2\u3068\u5F3E\u306E\u98DB\u8DDD\u96E2\u304C\u30E9\u30F3\u30AF\u306B\u5FDC\u3058\u3066\u5897\u52A0\u3059\u308B"
+    decoName: "\u30A4\u30C1\u30B4"
+    decoInfo: "\u901A\u5E38\u653B\u6483\u6642\u3001\u305F\u307E\u306B\u7BC4\u56F2\u5185\u3067\u6700\u3082HP\u306E\u9AD8\u3044\u6575\u3092\u72D9\u3046\u8CAB\u901A\u5F3E\u3092\u653E\u3064"
     flavorText: 
-    canStack: 1
+    canStack: 0
     rank: 1
     rarity: 1
-  rangePerRank: 25
+  chance: 25
+  attack:
+    projectile: {fileID: 7663961578913621665, guid: 94e465cd312fe35488b481e29dc48371, type: 3}
+    targetType: 0
+    DMGMod: 100
+    weight: 100
+    followTargetSpeed: 0
+    followCurrentTarget: 0
+    pellets: 1
+    fireRandomly: 0
+    spread: 5
+    equidistant: 0
+    projectileSpeed: {x: 8, y: 8}
+    infinitePenetration: 1
+    penetration: 0
+    projectileDuration: 2
 --- !u!212 &5866479890358183626
 SpriteRenderer:
   m_ObjectHideFlags: 0

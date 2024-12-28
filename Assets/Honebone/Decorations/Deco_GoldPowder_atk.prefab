@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5302194670483044208
+--- !u!1 &7663961578913621665
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,58 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 133166121128002862}
-  - component: {fileID: 8107262923448926107}
-  - component: {fileID: 5866479890358183626}
+  - component: {fileID: 247920378017368273}
+  - component: {fileID: 307004467475421864}
+  - component: {fileID: 7714976708323919946}
+  - component: {fileID: 4752215170866578090}
   m_Layer: 0
-  m_Name: Deco_BambooStick
+  m_Name: Deco_GoldPowder_atk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &133166121128002862
+--- !u!4 &247920378017368273
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5302194670483044208}
+  m_GameObject: {fileID: 7663961578913621665}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -4.602, y: -1.026, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8107262923448926107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5302194670483044208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 935aa22ee51813c43abc4f09b1dcdfe0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  decoStatus:
-    decoName: "\u7AF9\u4E32"
-    decoInfo: "\u653B\u6483\u7BC4\u56F2\u3068\u5F3E\u306E\u98DB\u8DDD\u96E2\u304C\u30E9\u30F3\u30AF\u306B\u5FDC\u3058\u3066\u5897\u52A0\u3059\u308B"
-    flavorText: 
-    canStack: 1
-    rank: 1
-    rarity: 1
-  rangePerRank: 25
---- !u!212 &5866479890358183626
+--- !u!212 &307004467475421864
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5302194670483044208}
+  m_GameObject: {fileID: 7663961578913621665}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -93,9 +74,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9b0f8b1249d48954ab0011f6eeb4446a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 30
+  m_Sprite: {fileID: 21300000, guid: 268c4db68f50cbb45841a817134a6c8c, type: 3}
+  m_Color: {r: 1, g: 0.7414741, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -105,3 +86,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7714976708323919946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7663961578913621665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57927cb0066a3054aba6f3c8ad2d3664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &4752215170866578090
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7663961578913621665}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.08
