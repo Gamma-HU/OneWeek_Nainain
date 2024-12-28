@@ -16,8 +16,11 @@ public class Decoration : MonoBehaviour
     }
     [SerializeField] DecoStatus decoStatus;
 
-    public void Init(int rank)
+    protected Kurimanju manju;
+
+    public void Init(Kurimanju m,int rank = 1)
     {
+        manju = m;
         decoStatus.rank = rank;
         OnInit();
     }
@@ -26,6 +29,8 @@ public class Decoration : MonoBehaviour
         decoStatus.rank++;
         OnAddRank();
     }
+
+    public virtual void OnAttack(Enemy target,Attack atk,bool normalATK) { }
 
     public virtual void OnInit() { }
     public virtual void OnAddRank() { }

@@ -51,7 +51,7 @@ public class Projectile : MonoBehaviour
         //    tf.Rotate(0, 0, Mathf.Clamp(rot, followTargetSpeed * -0.5f, followTargetSpeed * 0.5f));
         //}
 
-        transform.Translate(Vector3.up * projectileSpeed / 50f);
+        tf.Translate(Vector3.up * projectileSpeed / 50f);
     }
 
     void DestroyPJTL(bool expired)
@@ -84,7 +84,10 @@ public class Projectile : MonoBehaviour
                 hitEnemies.Add(collision.GetInstanceID());
                 Enemy hit = collision.GetComponent<Enemy>();
                 //Enemy.EnemyStatus enemyStatus = hit.GetEnemyStatus();//攻撃処理
-                //int DMG = attack.DMG;
+                OnHit(hit);
+
+                //攻撃者の攻撃力 x (100+攻撃のダメージ補正)%　が最終ダメージ
+                int DMG = (attacker.Status().ATK * (100f + attack.DMGMod / 100f)).ToInt();
 
 
                 //hit.Damage(DMG, attacker.transform, execute);
@@ -96,4 +99,6 @@ public class Projectile : MonoBehaviour
 
         }
     }
+
+    public virtual void OnHit(Enemy hit) { }
 }
