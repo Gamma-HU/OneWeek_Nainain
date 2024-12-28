@@ -19,7 +19,7 @@ public class ItemStock : MonoBehaviour
         
     }
 
-    void OnReduce(int itemType){
+    public void OnReduce(int itemType){
         if(itemType == 0){
             nainainStock--;
         }else if(itemType == 1){
@@ -27,8 +27,9 @@ public class ItemStock : MonoBehaviour
         }else{
             gouseiStock--;
         }
+        Debug.Log("REduced"+itemType);
     }
-    void OnIncreace(int itemType){
+    public void OnIncreace(int itemType){
         if(itemType == 0){
             nainainStock++;
         }else if(itemType == 1){
@@ -36,6 +37,6 @@ public class ItemStock : MonoBehaviour
         }else{
             gouseiStock++;
         }
+        Debug.Log("Increaced"+itemType);
     }
-
 }

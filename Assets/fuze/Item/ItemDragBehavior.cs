@@ -7,15 +7,23 @@ using UnityEngine.EventSystems;
 public class ItemDragBehavior : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
 
-    private Vector2 prevPos; //保存しておく初期position
-    private RectTransform rectTransform; // 移動したいオブジェクトのRectTransform
-    private RectTransform parentRectTransform; // 移動したいオブジェクトの親(Panel)のRectTransform
+    Vector2 prevPos; //保存しておく初期position
+    Vector2 offSet;
+    RectTransform rectTransform; // 移動したいオブジェクトのRectTransform
+    RectTransform parentRectTransform; // 移動したいオブジェクトの親(Panel)のRectTransform
+
+    ItemStock  itemStock;
+    [SerializeField]string playerTagName;
+    [SerializeField]int itemType;
+    
 
 
     private void Start()
     {
-        rectTransform = GetComponent<RectTransform>();
-        parentRectTransform = rectTransform.parent as RectTransform;
+      rectTransform = GetComponent<RectTransform>();
+      parentRectTransform = rectTransform.parent as RectTransform;
+      offSet = new Vector2(0, rectTransform.sizeDelta.y*0.5f);
+      itemStock = GetComponentInParent<ItemStock>();
     }
 
 
@@ -35,7 +43,7 @@ public class ItemDragBehavior : MonoBehaviour, IDragHandler, IBeginDragHandler, 
         // オブジェクトの位置をlocalPositionに変更する
 
         Vector2 localPosition = GetLocalPosition(eventData.position);
-        rectTransform.anchoredPosition = localPosition;
+        rectTransform.anchoredPosition = localPosition + offSet;
     }
 
     // ドラッグ終了時の処理
@@ -50,8 +58,9 @@ public class ItemDragBehavior : MonoBehaviour, IDragHandler, IBeginDragHandler, 
       RaycastHit2D[] hit2D = Physics2D.RaycastAll(MousePoint , Vector3.forward);
       foreach(RaycastHit2D hit in hit2D){
 
-        if(hit.transform.gameObject.name == conpeito){
-
+        if(hit.transform.gameObject.tag == playerTagName){
+          Debug.Log("ItemUsed");
+          itemStock.OnReduce(itemType);
         }
       }
     }
