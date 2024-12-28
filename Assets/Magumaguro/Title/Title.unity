@@ -336,11 +336,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &178569057 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8374605597688443417, guid: 5df40448fde91be45b12373fc81f7960, type: 3}
-  m_PrefabInstance: {fileID: 895843736}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &255693316
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,27 +480,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 269982388}
-  - component: {fileID: 269982387}
   m_Layer: 0
   m_Name: TitleButtonController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &269982387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 269982386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4051be8dab11249a5274baf881a5c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VolumePanel: {fileID: 0}
+  m_IsActive: 0
 --- !u!4 &269982388
 Transform:
   m_ObjectHideFlags: 0
@@ -6867,7 +6848,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 175ce249f3eaa6d4baa267832da69d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Audio: {fileID: 178569057}
 --- !u!1 &1326810156
 GameObject:
   m_ObjectHideFlags: 0
@@ -8167,7 +8147,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 269982387}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TitleButtonController, Assembly-CSharp
         m_MethodName: OnStartButtonClicked
         m_Mode: 1
@@ -8829,18 +8809,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

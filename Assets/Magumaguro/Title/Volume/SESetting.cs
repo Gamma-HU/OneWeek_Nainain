@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class SESetting : MonoBehaviour,IPointerUpHandler
 {
     AudioSource audioSource;
-    [SerializeField] private GameObject Audio;
+    private GameObject Audio;
     public void OnPointerUp(PointerEventData eventData)
     {
         Debug.Log("SE");
@@ -18,7 +18,7 @@ public class SESetting : MonoBehaviour,IPointerUpHandler
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        
+        Audio = GameObject.Find("Game Sound");
     }
 
     // Update is called once per frame
