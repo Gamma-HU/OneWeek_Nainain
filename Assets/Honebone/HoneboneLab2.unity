@@ -816,7 +816,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768147371}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a0d04c1fe5caa8488f478a09f10db1e, type: 3}
   m_Name: 
@@ -825,8 +825,17 @@ MonoBehaviour:
   GoalPos: {fileID: 330165987}
   TopLeft: {fileID: 148110739}
   BottomRight: {fileID: 1217981177}
-  Enemy1: {fileID: 5498944899321776846, guid: 49ae439221c331d488fa37c6d3cbefb1, type: 3}
   GizmoSize: 0
+  WaveList:
+  - {fileID: 5655038272662657365, guid: bc8e246bea036b6438c869c789cc3d28, type: 3}
+  - {fileID: 5655038272662657365, guid: c15a9e44d408d734d9687cf245e32edb, type: 3}
+  EnemyPrefabs:
+  - {fileID: 5498944899321776846, guid: 074959b5f7e9bfb448270397cf8c16d2, type: 3}
+  - {fileID: 6989350766948945971, guid: d8dcb9fb86a777446b9fc65d94074c34, type: 3}
+  - {fileID: 209717703224128223, guid: 264aa924af02cca41ac441c06bb30a2f, type: 3}
+  - {fileID: 8610369078158900284, guid: 5dc095c85cd71f4429902fcbf73e9e59, type: 3}
+  - {fileID: 6759436560528683114, guid: 6698be8e2911fcf4688336bf9fa4a8d7, type: 3}
+  currentPhase: 0
 --- !u!1 &820805495
 GameObject:
   m_ObjectHideFlags: 0
