@@ -4,25 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ItemDragBehavior : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class ManjuDragBehavior : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
 
     Vector2 prevPos; //保存しておく初期position
     Vector2 offSet;
     RectTransform rectTransform; // 移動したいオブジェクトのRectTransform
-    RectTransform parentRectTransform; // 移動したいオブジェクトの親(Panel)のRectTransform
+    RectTransform parentRectTransform; // 移動したいオブジェクトの親(Canvas)のRectTransform
 
-    ItemStock  itemStock;
     [SerializeField]string playerTagName;
-    [SerializeField]int itemType;
-    
+
     private void Start()
     {
       rectTransform = GetComponent<RectTransform>();
       parentRectTransform = rectTransform.parent as RectTransform;
       offSet = new Vector2(0, rectTransform.sizeDelta.y*0.5f);
-      itemStock = GetComponentInParent<ItemStock>();
     }
+
 
 
     // ドラッグ開始時の処理
@@ -57,24 +55,18 @@ public class ItemDragBehavior : MonoBehaviour, IDragHandler, IBeginDragHandler, 
       foreach(RaycastHit2D hit in hit2D){
 
         if(hit.transform.gameObject.tag == playerTagName){
-          Debug.Log("ItemUsed");
-          itemStock.OnReduce(itemType);
+          Debug.Log("Gousei");
         }
       }
     }
 
-    // ScreenPositionからlocalPositionへの変換関数
-  private Vector2 GetLocalPosition(Vector2 screenPosition)
-  {
-      Vector2 result = Vector2.zero;
+    private Vector2 GetLocalPosition(Vector2 screenPosition)
+    {
+        Vector2 result = Vector2.zero;
 
-      // screenPositionを親の座標系(parentRectTransform)に対応するよう変換する.
-      RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRectTransform, screenPosition, Camera.main, out result);
+        // screenPositionを親の座標系(parentRectTransform)に対応するよう変換する.
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRectTransform, screenPosition, Camera.main, out result);
 
-      return result;
-  }
-
+        return result;
+    }
 }
-  
-
-
