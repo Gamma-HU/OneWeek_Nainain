@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ManjuDragBehavior : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class KurimanjuUIDragBehavior : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
 
     Vector2 prevPos; //保存しておく初期position

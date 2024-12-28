@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class ManjuUIState : MonoBehaviour
+public class KurimanjuUIState : MonoBehaviour
 {
     Vector2 offSet;  // アンカーの位置でずれるのを防ぐ
     RectTransform rectTransform; // 移動したいオブジェクトのRectTransform
@@ -22,7 +22,7 @@ public class ManjuUIState : MonoBehaviour
     }
 
     void InitializePosition(){
-        Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.parent.gameObject.transform.position);
+        Vector2 screenPosition = Camera.main.WorldToScreenPoint(KurimanjuHonati.transform.position);
         Vector2 localPosition = GetLocalPosition(screenPosition);
         rectTransform.anchoredPosition = localPosition + offSet;
     }
