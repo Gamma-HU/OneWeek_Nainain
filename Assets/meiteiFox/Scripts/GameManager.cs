@@ -52,6 +52,16 @@ public class GameManager : MonoBehaviour
         Route = AddStartAndGoal(StartPos.position,GoalPos.position,Route);
         WaveStart(1);
     }
+    /// <summary>
+    /// ƒQ[ƒ€ŠJn
+    /// </summary>
+    /// <param name="spawnPos">Å‰‚ÌŒIé\“ª‚ÌêŠ</param>
+    public void GameStart(Vector2Int spawnPos)
+    {
+        ManjuManager.instance.SpawnManju(spawnPos, new List<DecorationParams>(),1);
+        Sinryaku_Start();
+    }
+
     private void TogglePhase()
     {
         if (currentPhase == Phase.Preparation)
@@ -88,16 +98,26 @@ public class GameManager : MonoBehaviour
             TogglePhase();
         }
     }
+
+    bool spawning;
     IEnumerator Invasion()
     {
+        spawning = true;
         EnemyWave[] enemyWaves =  WaveList[currentWave - 1].GetComponent<Waves>().waves.ToArray();
         for (int i = 0; i < enemyWaves.Length; i++)
         {
             yield return new WaitForSeconds(enemyWaves[i].spawnSec);
             EnemyGen((int)enemyWaves[i].enemyType, enemyWaves[i].level);
         }
-        TogglePhase();
+        //TogglePhase();
+        spawning = false;
     }
+
+    public void EndWave()
+    {
+        if (currentPhase == Phase.Invasion) { TogglePhase(); }
+    }
+
     void EnemyGen(int enemyIndex, int enemylevel)
     {
         GameObject enemy = Instantiate(EnemyPrefabs[enemyIndex], Route[0], Quaternion.identity);
@@ -151,6 +171,7 @@ public class GameManager : MonoBehaviour
     public void RemoveEnemy(Honemy enemy)
     {
         enemies.Remove(enemy);
+        if (enemies.Count == 0 && !spawning) { EndWave(); }
     }
 
     public Honemy GetEnemy()

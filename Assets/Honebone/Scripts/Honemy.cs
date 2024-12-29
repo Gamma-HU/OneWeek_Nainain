@@ -15,8 +15,9 @@ public class Honemy : MonoBehaviour
         public bool dead;
         public int HP;
 
-        public void Init()
+        public void Init(int level)
         {
+            maxHP *= Mathf.Pow(level, 2).ToInt();
             HP = maxHP;
             slowedSpeed = moveSpeed / 2f;
         }
@@ -32,7 +33,7 @@ public class Honemy : MonoBehaviour
 
     public void Init(Vector3[] r, int level)
     {
-        status.Init();
+        status.Init(level);
         Route = r;
         Level = level;
         moveSpeed = status.moveSpeed;
