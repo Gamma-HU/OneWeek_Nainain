@@ -6,19 +6,23 @@ using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField]
-    UnityEngine.Events.UnityEvent onDropEvent;
-
     Image image;
+
+    Kurimanju hontai; // OtherKurimanjuの場合だけ設定される
 
     
     void Start()
     {
         image = GetComponent<Image>();
     }
-    public virtual void OnDrop(){
-        Debug.Log("OnDropFunctionWithNoArgument");
-        onDropEvent.Invoke();
+    public Image Image(){
+        return image;
+    }
+    public Kurimanju Hontai(){
+        return hontai;
+    }
+    public void SetHontai(Kurimanju hontai){
+        this.hontai = hontai;
     }
 }
 

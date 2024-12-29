@@ -44,3 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74847604054d5c44190b129412becc3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemTagName: Item
+  dropTargetTagName: Player
+  conbineItemName: KurimanjuUI
+  tripleItemName: Sanbain
+  nonupleItemName: Nainain
+  draggingUIObj: {fileID: 2467260408675279022, guid: 8a0b6cd8ea9d7914b88b5777169a171b, type: 3}
