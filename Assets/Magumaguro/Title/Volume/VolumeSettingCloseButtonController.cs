@@ -7,13 +7,16 @@ public class VolumeSettingCloseButtonController : MonoBehaviour
 {
     private static GameObject StartButton;
     private static GameObject VolumeSettingButton;
+    private static GameObject ResetButton;
     void Start()
     {
         StartButton = GameObject.Find("StartButton");
         VolumeSettingButton = GameObject.Find("VolumeSettingButton");
+        ResetButton = GameObject.Find("ResetButton");
         Debug.Log("StartButton: " + StartButton);
         StartButton.SetActive(false);
         VolumeSettingButton.SetActive(false);
+        ResetButton.SetActive(false);
     }
 
     // Update is called once per frame
@@ -38,6 +41,7 @@ public class VolumeSettingCloseButtonController : MonoBehaviour
     {
         StartButton = GameObject.Find("StartButton");
         VolumeSettingButton = GameObject.Find("VolumeSettingButton");
+        ResetButton = GameObject.Find("ResetButton");
         Debug.Log("StartButton: " + StartButton);
     }
 
@@ -45,5 +49,6 @@ public class VolumeSettingCloseButtonController : MonoBehaviour
     {
         StartButton.SetActive(true);
         VolumeSettingButton.SetActive(true);
+        ResetButton.SetActive(true);
     }
 }
