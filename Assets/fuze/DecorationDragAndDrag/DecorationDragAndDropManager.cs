@@ -4,47 +4,34 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class DragAndDropManager : MonoBehaviour
+public class DecorationDragAndDropManager : MonoBehaviour
 {
     [SerializeField]string dropTargetTagName = "Player";  // ドラッグされているUIが落とされるKurimanjuUI(Clone)に付けられたタグ。
 
-    [SerializeField]string conbineItemName = "KurimanjuUI(Clone)";
-    [SerializeField]string tripleItemName = "Sanbain";
-    [SerializeField]string nonupleItemName = "Nainain";  // それぞれはUIのGameObjectの名前。
+    [SerializeField]string DecorationUIName = "Nainain";  // ドラッグ可能な装飾品のUIの名前。
 
     [SerializeField]
     GameObject draggingUI; // ドラッグ中のUI要素を表示するGameObject
-
     Image draggingUIImage;
-    string draggingItemName;  // 掴んでいる、使う予定のアイテムの情報。
-    DropPoint draggingItem; //ドロップしたときにGameObjectを呼ぶ
+    
+    Decoration draggingDecoration;  // 掴んでいる、使う予定の装飾品の情報。
+
+    DropPoint dropPoint; //KurimanjuUIについていて、ドロップしたUIの本体のKurimanjuスクリプトを知っている。
 
     void Start(){
         draggingUIImage = draggingUI.GetComponent<Image>();
     }
 
 
-    void ItemDropedActin(Kurimanju target){  // targetが、アイテムが使われるKurimanjuスクリプト。合成先。
-        if(draggingItem.name == conbineItemName){
-
-            Debug.Log("gousei");
-
-            Debug.Log("合成元は" +  draggingItem.Hontai()); // Hontai()ではKurimanjuが取得できる 
-        }else if(draggingItem.name == tripleItemName){
-
-            Debug.Log("sanbai");
-
-        }else if(draggingItem.name == nonupleItemName){
-
-            Debug.Log("kyuubai");
-
-        }
+    void DecorationDropedActin(Kurimanju target){  // targetが、アイテムが使われるKurimanjuスクリプト。合成先。
+        Debug.Log("ターゲット:" + target + "デコ:" + draggingDecoration);
+        //target.Equip(GameObject deco, int rank) Equipを呼ぶ。
     }
 
-    public void OnClickItem(GameObject clickItem){
-        this.draggingItemName = clickItem.name;
+    public void OnClickItem(GameObject clickDeco){
+        this.draggingDecoration = clickDeco.GetComponent<Decoration>();
         draggingUIImage.enabled = true;
-        draggingUIImage.sprite = clickItem.GetComponent<Image>().sprite;
+        draggingUIImage.sprite = draggingDecoration.sprite;
         Debug.Log("SetDraggingUI!!");
     }
     void Update(){
@@ -55,7 +42,7 @@ public class DragAndDropManager : MonoBehaviour
             EventSystem.current.RaycastAll(pointData, RayResult);
             foreach (RaycastResult result in RayResult){
                 var getObj = result.gameObject;
-                if(getObj.name == conbineItemName || getObj.name == tripleItemName || getObj.name == nonupleItemName){
+                if(getObj.name == DecorationUIName){
 
                     OnClickItem(getObj);
                 }
@@ -63,7 +50,7 @@ public class DragAndDropManager : MonoBehaviour
             }
         }
         if(Input.GetMouseButtonUp(0)){
-            if(draggingItem != null){
+            if(draggingDecoration != null){
                 PointerEventData pointData = new PointerEventData(EventSystem.current);
                 pointData.position = Input.mousePosition;
                 List<RaycastResult> RayResult = new List<RaycastResult>();
@@ -71,14 +58,13 @@ public class DragAndDropManager : MonoBehaviour
                 foreach (RaycastResult result in RayResult){
                     if(result.gameObject.tag == dropTargetTagName){
 
-                        Kurimanju target = result.gameObject.GetComponent<DropPoint>().Hontai(); // これこそがアイテムが使われたり合成されたりするKurimanjuスクリプト
+                        Kurimanju target = result.gameObject.GetComponent<DropPoint>().Hontai(); // これこそが装飾品を装備するKurimanjuのスクリプト
 
-                        ItemDropedActin(target);
-                        draggingItem = null;
+                        DecorationDropedActin(target);
                     }
                 }
             }
-            draggingItem = null;
+            draggingDecoration = null;
             draggingUIImage.enabled = false;
         }
     }
