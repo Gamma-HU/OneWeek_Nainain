@@ -17,6 +17,7 @@ public class Kurimanju : MonoBehaviour
         public float AS_mul = 100f;
 
         public float spread;
+        public int exPellet;
         [Header("=ATK_base x ATK_mul(%)")] public int ATK;
         [Header("=range_base x range_mul(%)")] public float range;
         [Header("UŒ‚‰ñ”/s")] public float attackSpeed;
@@ -83,7 +84,14 @@ public class Kurimanju : MonoBehaviour
         //    d.decoData = deco.decoData;
         //    decorations.Add(d);
         //}
-        decorations.AddRange(new List<DecorationParams>(decos));
+        for(int i = 0; i < decos.Count; i++)
+        {
+            DecorationParams deco = new DecorationParams();
+            deco.rank = decos[i].rank;
+            deco.decoData = decos[i].decoData;
+            decorations.Add(deco);
+        }
+        //decorations.AddRange(new List<DecorationParams>(decos));
 
         for (int i = 0; i < decorations.Count; i++)//‘•ü•i‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»
         {
@@ -178,7 +186,7 @@ public class Kurimanju : MonoBehaviour
         Quaternion quaternion = Quaternion.FromToRotation(Vector3.up, dir);
         float spread_fin = Mathf.Max(atk.spread + status.spread, 0);
         float delta = spread_fin / -2f;
-        for (int i = 0; i < atk.pellets; i++)
+        for (int i = 0; i < atk.pellets+status.exPellet; i++)
         {
             float spread = 0f;
             if (spread_fin > 0 && !atk.equidistant) { spread = Random.Range(spread_fin / -2f, spread_fin / 2f); }//ŠgU‚ÌŒˆ’è

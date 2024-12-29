@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1787183249984637335}
   - component: {fileID: 5866479890358183626}
   m_Layer: 0
-  m_Name: Deco_StrawBerry
+  m_Name: Deco_Honey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,26 +46,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decoStatus:
-    decoName: "\u30A4\u30C1\u30B4"
-    decoInfo: "\u901A\u5E38\u653B\u6483\u6642\u3001\u305F\u307E\u306B\u8CAB\u901A\u5F3E\u3092\u653E\u3064"
+    decoName: "\u306F\u3061\u307F\u3064"
+    decoInfo: "\u901A\u5E38\u653B\u6483\u6642\u3001\u307E\u308C\u306B\u6575\u306E\u52D5\u304D\u3092\u6B62\u3081\u308B\u306F\u3061\u307F\u3064\u5F3E\u3092\u6483\u3061\u51FA\u3059"
     flavorText: 
     canStack: 0
     rank: 1
-    rarity: 1
-  chance: 25
+    rarity: 2
+  chance: 5
   attack:
-    projectile: {fileID: 7663961578913621665, guid: 94e465cd312fe35488b481e29dc48371, type: 3}
+    projectile: {fileID: 7663961578913621665, guid: 956e954eeefffa946a4cc0d25e486d19, type: 3}
     targetType: 0
-    DMGMod: 100
+    DMGMod: 0
     weight: 100
     followTargetSpeed: 0
     followCurrentTarget: 0
     pellets: 1
     fireRandomly: 0
-    spread: 5
+    spread: 10
     equidistant: 0
-    projectileSpeed: {x: 8, y: 8}
-    infinitePenetration: 1
+    projectileSpeed: {x: 5, y: 5}
+    infinitePenetration: 0
     penetration: 0
     projectileDuration: 4
 --- !u!212 &5866479890358183626
@@ -109,7 +109,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b5b4eeea72a55bf41a29e8f51051f419, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c9969479f430aa6409d9f48bc0450037, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

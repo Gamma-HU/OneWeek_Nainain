@@ -33,6 +33,9 @@ public class Honemy : MonoBehaviour
     bool slowed;
     float slowTimer;
 
+    bool stuned;
+    float stunTimer;
+
 
     public void Init(Vector3[] r, int level)
     {
@@ -74,7 +77,12 @@ public class Honemy : MonoBehaviour
         particle_slow.Play();
     }
 
-
+    public void Stun()
+    {
+        stuned = true;
+        stunTimer = 0;
+        //particle_slow.Play();
+    }
 
 
 
@@ -129,7 +137,16 @@ public class Honemy : MonoBehaviour
             }
         }
 
-
+        if (stuned)
+        {
+            stunTimer += Time.deltaTime;
+            if (stunTimer >= 1)
+            {
+                stunTimer = 0;
+                stuned = false;
+                //particle_slow.Stop();
+            }
+        }
 
 
 
@@ -163,7 +180,7 @@ public class Honemy : MonoBehaviour
         else
         {
             // ターゲットに向かって移動
-            transform.position = nextPosition;
+            if (!stuned) transform.position = nextPosition;
         }
     }
 }

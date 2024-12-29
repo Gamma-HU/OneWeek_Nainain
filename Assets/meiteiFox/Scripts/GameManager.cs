@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using static UnityEngine.GraphicsBuffer;
 
 
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject[] WaveList;
     int currentWave;
     [SerializeField] GameObject[] EnemyPrefabs;
+
     public static GameManager instance;
     public enum Phase
     {
@@ -43,6 +45,15 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        for (int i = 0; i < Enum.GetNames(typeof(Decoration.DecoStatus.Rarity)).Length; i++)
+        {
+            decorations.Add(new List<GameObject>());
+        }
+        foreach(GameObject deco in decorationDataBase)
+        {
+            decorations[(int)deco.GetComponent<Decoration>().Status().rarity].Add(deco);
+        }
     }
 
     void Start()
@@ -168,6 +179,18 @@ public class GameManager : MonoBehaviour
 
 
     List<Honemy> enemies = new List<Honemy>();
+    public List<GameObject> decorationDataBase;
+    public int dropDecorationChance;//敵を倒した時に小食品をおとすかくりつ
+    public List<float> dropDecorationWeight;//装飾品ドロップ時のレアリティの重み
+
+    List<List<GameObject>> decorations = new List<List<GameObject>>();
+
+    /// <summary>ランダムな装飾品を返す(レアリティを考慮)</summary>
+    public GameObject GetRandomDeco()
+    {
+        return decorations[dropDecorationWeight.ChoiceWithWeight()].Choice();
+    }
+
     public void RemoveEnemy(Honemy enemy)
     {
         enemies.Remove(enemy);
