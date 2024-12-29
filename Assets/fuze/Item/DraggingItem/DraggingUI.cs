@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class DraggingUI : MonoBehaviour
+public class DraggingUI : MonoBehaviour // ドラッグ中マウスについてくる
 {
     Image image;
 
