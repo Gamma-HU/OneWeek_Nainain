@@ -20,13 +20,13 @@ public class Honebone_Test : MonoBehaviour
 
     private void Start()
     {
-        foreach(Vector2 pos in manjuPos)
-        {
-            var m = Instantiate(manju, pos, Quaternion.identity);
-            m.GetComponent<Kurimanju>().Init(pos,new List<DecorationParams>());
-            m.GetComponent<Kurimanju>().StartBattle();
-            majuList.Add(m.GetComponent<Kurimanju>());
-        }
+        //foreach(Vector2 pos in manjuPos)
+        //{
+        //    var m = Instantiate(manju, pos, Quaternion.identity);
+        //    m.GetComponent<Kurimanju>().Init(pos,new List<DecorationParams>());
+        //    m.GetComponent<Kurimanju>().StartBattle();
+        //    majuList.Add(m.GetComponent<Kurimanju>());
+        //}
 
         foreach(Enemy enemy in enemyTest)
         {
@@ -40,6 +40,13 @@ public class Honebone_Test : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 majuList[0].Equip(equip, 1);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                for(int i = 0; i < 81; i++)
+                {
+                    ManjuManager.instance.SpawnManju(i.IntToVector(), new List<DecorationParams>());
+                }
             }
         }    
     }

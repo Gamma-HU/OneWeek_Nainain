@@ -18,6 +18,7 @@ public class Honemy : MonoBehaviour
         public void Init()
         {
             HP = maxHP;
+            slowedSpeed = moveSpeed / 2f;
         }
     }
     [SerializeField] EnemyStatus status;
