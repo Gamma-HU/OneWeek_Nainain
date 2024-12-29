@@ -1240,7 +1240,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.87
+  m_PixelsPerUnitMultiplier: 0.46
 --- !u!222 &614026081
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1706,7 +1706,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.4
+  m_PixelsPerUnitMultiplier: 0.145
 --- !u!222 &769406808
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6582,7 +6582,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -72.32001}
+  m_AnchoredPosition: {x: 0, y: -108.96}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &934740871
@@ -6696,6 +6696,7 @@ GameObject:
   - component: {fileID: 969285211}
   - component: {fileID: 969285215}
   - component: {fileID: 969285214}
+  - component: {fileID: 969285216}
   m_Layer: 5
   m_Name: ResetButton
   m_TagString: Untagged
@@ -6809,7 +6810,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.6
+  m_PixelsPerUnitMultiplier: 0.5
 --- !u!222 &969285213
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6907,6 +6908,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3af73167defbb246b1c936e6bb6d379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &969285216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969285209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 10, y: -7}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1103123352
 GameObject:
   m_ObjectHideFlags: 0
@@ -7518,7 +7534,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.87
+  m_PixelsPerUnitMultiplier: 0.54
 --- !u!222 &1163395537
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8126,7 +8142,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.87
+  m_PixelsPerUnitMultiplier: 0.46
 --- !u!222 &1307243388
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8551,6 +8567,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1818690042}
     m_Modifications:
+    - target: {fileID: 645950493238328424, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2754533492148136614, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -79.08002
+      objectReference: {fileID: 0}
     - target: {fileID: 3228827634524698609, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -8671,9 +8695,17 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4645730034603015644, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4651645182904280672, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 552.3
+      objectReference: {fileID: 0}
     - target: {fileID: 4651645182904280672, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -26.02
+      value: -26.020004
       objectReference: {fileID: 0}
     - target: {fileID: 5219328475886984596, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -8691,13 +8723,17 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ChangeGameSoundVolume
       objectReference: {fileID: 0}
+    - target: {fileID: 5539931930834144819, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 756.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6043203339648661537, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_text
       value: 100.0
       objectReference: {fileID: 0}
     - target: {fileID: 6611394878014588676, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -68.89
+      value: -87.4
       objectReference: {fileID: 0}
     - target: {fileID: 6755675517822144197, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -8809,7 +8845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7129497235014212211, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -68.89
+      value: -87.4
       objectReference: {fileID: 0}
     - target: {fileID: 7318458191036396931, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -8819,9 +8855,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7442184438839584492, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 552.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7750459556422700597, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_text
       value: 100.0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8594733534111892512, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 756.1
       objectReference: {fileID: 0}
     - target: {fileID: 8621944134332903283, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -8830,6 +8874,18 @@ PrefabInstance:
     - target: {fileID: 8621944134332903283, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ChangeBGMVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 9044991804960357750, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1055.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 9044991804960357750, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 569.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143142946669883269, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
@@ -9100,7 +9156,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.4
+  m_PixelsPerUnitMultiplier: 0.2
 --- !u!222 &1743987172
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9286,7 +9342,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.56
 --- !u!222 &1802682322
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9682,7 +9738,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 0.87
+  m_PixelsPerUnitMultiplier: 0.54
 --- !u!222 &1887582967
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9858,18 +9914,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 969285209}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &2041706567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9891,7 +9935,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 5eb4c2093ab736246a551536e54d31ca, type: 3}
-  m_Type: 1
+  m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -9899,7 +9943,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.56
 --- !u!222 &2041706568
 CanvasRenderer:
   m_ObjectHideFlags: 0
