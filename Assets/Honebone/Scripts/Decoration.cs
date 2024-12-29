@@ -12,7 +12,8 @@ public class Decoration : MonoBehaviour
         [TextArea(3, 10)] public string flavorText;
         public bool canStack;
         public int rank = 1;
-        public enum rarity { common, rare, superRare }
+        public enum Rarity { common, rare, superRare }
+        public Rarity rarity;
     }
     [SerializeField]protected DecoStatus decoStatus;
     public DecoStatus Status() { return decoStatus; }

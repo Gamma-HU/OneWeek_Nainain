@@ -47,10 +47,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   decoStatus:
     decoName: "\u7AF9\u4E32"
-    decoInfo: "\u5C04\u7A0B\u8DDD\u96E2\u304C\u5897\u52A0\u3059\u308B"
+    decoInfo: "\u653B\u6483\u7BC4\u56F2\u3068\u5F3E\u306E\u98DB\u8DDD\u96E2\u304C\u30E9\u30F3\u30AF\u306B\u5FDC\u3058\u3066\u5897\u52A0\u3059\u308B"
     flavorText: 
     canStack: 1
     rank: 1
+    rarity: 1
   rangePerRank: 25
 --- !u!212 &5866479890358183626
 SpriteRenderer:
@@ -93,7 +94,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9b0f8b1249d48954ab0011f6eeb4446a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d03599179f169cd4ba3bdf1d14cc37fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

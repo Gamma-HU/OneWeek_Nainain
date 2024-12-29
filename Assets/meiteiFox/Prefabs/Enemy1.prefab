@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 3998430130268650088}
   - component: {fileID: 1735776713234472271}
   - component: {fileID: 4333715302929837069}
-  - component: {fileID: 5316627256890433025}
+  - component: {fileID: -3521595122138221322}
   m_Layer: 0
   m_Name: Enemy1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5316627256890433025
+--- !u!114 &-3521595122138221322
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,4 +119,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Route: []
-  Speed: 1
+  Speed: 0
+  Hp: 0

@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2423933192439216986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.2, y: -1.94, z: 0}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,16 +98,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status:
-    ATK_base: 1
+    ATK_base: 10
     range_base: 2
-    attackSpeed: 0.8
+    AS_base: 1
     ATK_mul: 100
     range_mul: 100
+    AS_mul: 100
+    spread: 0
     ATK: 0
     range: 0
+    attackSpeed: 0.8
     position: {x: 0, y: 0}
   attack:
     projectile: {fileID: 7663961578913621665, guid: ab650b2c2706e354693b13ca6e2f10d7, type: 3}
+    targetType: 0
     DMGMod: 0
     weight: 100
     followTargetSpeed: 0
@@ -121,7 +125,16 @@ MonoBehaviour:
     penetration: 0
     projectileDuration: 5
   decorations:
+  - decoData: {fileID: 5302194670483044208, guid: 5e0cacb95cea70745bff9e8f1abe479f, type: 3}
+    instance: {fileID: 0}
+    rank: 1
   - decoData: {fileID: 5302194670483044208, guid: d1f746d817e21dc418a731e32b3fbdf4, type: 3}
+    instance: {fileID: 0}
+    rank: 1
+  - decoData: {fileID: 5302194670483044208, guid: dbdb451f4450fe4479079aaa1c3f8888, type: 3}
+    instance: {fileID: 0}
+    rank: 1
+  - decoData: {fileID: 5302194670483044208, guid: 7a455e10664cdf5429058ebba8ae5b2f, type: 3}
     instance: {fileID: 0}
     rank: 1
   smoke: {fileID: 9206898335192646768, guid: 29d419ca8d9318f459c6b9aaf9d25996, type: 3}

@@ -8,19 +8,24 @@ public class Kurimanju : MonoBehaviour
     {
         public int ATK_base;
         public float range_base;
-        [Header("UŒ‚‰ñ”/s")] public float attackSpeed;
+        public float AS_base;
 
         [Header("\n\nˆÈ‰º‚Í‘ã“ü‚³‚ê‚é")]
         public float ATK_mul = 100f;
         public float range_mul = 100f;
+        public float AS_mul = 100f;
+
+        public float spread;
         [Header("=ATK_base x ATK_mul(%)")] public int ATK;
         [Header("=range_base x range_mul(%)")] public float range;
+        [Header("UŒ‚‰ñ”/s")] public float attackSpeed;
         public Vector2 position;
 
         public void Init(Vector2 pos)
         {
             ATK = (ATK_base * ATK_mul / 100f).ToInt();
             range = range_base * range_mul / 100f;
+            attackSpeed = AS_base * AS_mul / 100f;
 
             position = pos;
         }
@@ -30,6 +35,12 @@ public class Kurimanju : MonoBehaviour
             range_base += add_base;
             range_mul += add_mul;
             range = range_base * range_mul / 100f;
+        }
+        public void AddAttackSpeed(float add_base, float add_mul)
+        {
+            AS_base += add_base;
+            AS_mul += add_mul;
+            attackSpeed = AS_base * AS_mul / 100f;
         }
     }
 
@@ -130,7 +141,7 @@ public class Kurimanju : MonoBehaviour
         Debug.DrawRay(origin, direction * status.range, Color.red);
         if (active)//wave’†‚È‚ç
         {
-            if (target == null)//ƒ^[ƒQƒbƒg‚ª‘¶İ‚µ‚È‚¢‚È‚ç
+            if (target == null||!target.GetComponent<Honemy>().CheckAlive())//ƒ^[ƒQƒbƒg‚ª‘¶İ‚µ‚È‚¢‚È‚ç
             {
                 SetTarget();
             }
@@ -160,30 +171,52 @@ public class Kurimanju : MonoBehaviour
         //if (status.turretData.SE_Fire != null) { soundManager.PlaySE(transform.position, status.turretData.SE_Fire); }
         if (atk.pellets == 0) { Debug.Log("”­Ë’e”‚ª0‚Å‚·I"); }
         if (atk.projectileDuration <= 0) { Debug.Log("‘±ŠÔ‚ª0‚Å‚·I"); }
+        Enemy finalTarget;
+        if (!normalAttack) { finalTarget = tar; }
+        else
+        {
+            switch (atk.targetType)
+            {
+                case global::Attack.TargetType.randomTarget:
+                    Debug.Log("‚±‚ê‚Íˆê“I‚Èˆ—‚Å‚·");
+                    finalTarget = Honebone_Test.instance.GetEnemies().Choice();
+                    break;
+                case global::Attack.TargetType.highestHP:
+                    Debug.Log("‚±‚ê‚Íˆê“I‚Èˆ—‚Å‚·");
+                    finalTarget = tar;
+                    break;
+                default:
+                    finalTarget = tar;
+                    break;
+            }
+        }
+
+        atk.projectileDuration *= status.range_mul / 100f;
 
         Vector3 dir = new Vector3();
-        dir = (tar.transform.position - transform.position).normalized;
+        dir = (finalTarget.transform.position - transform.position).normalized;
         Quaternion quaternion = Quaternion.FromToRotation(Vector3.up, dir);
-        float delta = atk.spread / -2f;
+        float spread_fin = Mathf.Max(atk.spread + status.spread, 0);
+        float delta = spread_fin / -2f;
         for (int i = 0; i < atk.pellets; i++)
         {
             float spread = 0f;
-            if (atk.spread > 0 && !atk.equidistant) { spread = Random.Range(atk.spread / -2f, atk.spread / 2f); }//ŠgU‚ÌŒˆ’è
+            if (spread_fin > 0 && !atk.equidistant) { spread = Random.Range(spread_fin / -2f, spread_fin / 2f); }//ŠgU‚ÌŒˆ’è
             if (atk.equidistant)//“™ŠÔŠu‚É”­Ë‚·‚é‚È‚ç
             {
                 spread = delta;
-                delta += atk.spread / (atk.pellets - 1);
+                delta += spread_fin / (atk.pellets - 1);
             }
             if (atk.fireRandomly) { spread = Random.Range(-180f, 180f); }//ƒ‰ƒ“ƒ_ƒ€‚É”ò‚Î‚·‚È‚ç
 
             var pjtl = Instantiate(atk.projectile, transform.position, quaternion);//pjtl‚Ì¶¬
-            pjtl.GetComponent<Projectile>().Init(this, tar, atk);
+            pjtl.GetComponent<Projectile>().Init(this, finalTarget, atk);
             pjtl.transform.Rotate(new Vector3(0, 0, 1), spread);//ŠgU•ª‰ñ“]‚³‚¹‚é
         }
 
         foreach(DecorationParams decorationParams in decorations)
         {
-            decorationParams.instance.OnAttack(tar, atk, normalAttack);
+            decorationParams.instance.OnAttack(finalTarget, atk, normalAttack);
         }
     }
 }
@@ -191,6 +224,8 @@ public class Kurimanju : MonoBehaviour
 public struct Attack
 {
     public GameObject projectile;
+    public enum TargetType { front, randomTarget, highestHP }
+    public TargetType targetType;
 
     [Header("ƒ_ƒ[ƒW•â³’l(%)")] public float DMGMod;
     [Header("(’ÊíUŒ‚‚É‚Ì‚İŠÖ˜A)\n’ÊíUŒ‚A‚±‚ê‚ª‘I‚Î‚ê‚éd‚İ")] public int weight;

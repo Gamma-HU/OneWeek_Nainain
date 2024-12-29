@@ -635,8 +635,17 @@ MonoBehaviour:
   GoalPos: {fileID: 330165987}
   TopLeft: {fileID: 148110739}
   BottomRight: {fileID: 1217981177}
-  Enemy1: {fileID: 5498944899321776846, guid: 49ae439221c331d488fa37c6d3cbefb1, type: 3}
-  GizmoSize: 0
+  GizmoSize: 0.5
+  WaveList:
+  - {fileID: 5655038272662657365, guid: caee905df2d6e46428d83499c6cf86d1, type: 3}
+  - {fileID: 5655038272662657365, guid: 8fa0bca93b8e3d6479c22b7d3e6230f1, type: 3}
+  EnemyPrefabs:
+  - {fileID: 5498944899321776846, guid: 49ae439221c331d488fa37c6d3cbefb1, type: 3}
+  - {fileID: 6989350766948945971, guid: ef8351e74244f4942afa010fe40ee10f, type: 3}
+  - {fileID: 209717703224128223, guid: 2b4ab1db1ce6f854498dc7b883f8a946, type: 3}
+  - {fileID: 8610369078158900284, guid: bb12600edc2f80e40ab03b9ddecfc635, type: 3}
+  - {fileID: 6759436560528683114, guid: 857c97e4bd0be084b9746656f4ba6c38, type: 3}
+  currentPhase: 0
 --- !u!1 &820805495
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,6 +658,7 @@ GameObject:
   - component: {fileID: 820805499}
   - component: {fileID: 820805498}
   - component: {fileID: 820805497}
+  - component: {fileID: 820805500}
   m_Layer: 5
   m_Name: Sinryaku
   m_TagString: Untagged
@@ -720,7 +730,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 820805498}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 820805500}
+        m_TargetAssemblyTypeName: SinryakuStart, Assembly-CSharp
+        m_MethodName: Sinryaku_Start
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &820805498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -759,6 +781,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820805495}
   m_CullTransparentMesh: 1
+--- !u!114 &820805500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820805495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ee2d916ed4129408e988e62d0df6e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 768147373}
 --- !u!1 &988641377
 GameObject:
   m_ObjectHideFlags: 0
