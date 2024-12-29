@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2667680488355827896}
   - component: {fileID: 1728756811828722279}
   - component: {fileID: -3733244231332123943}
+  - component: {fileID: 7593194937219450617}
   m_Layer: 0
   m_Name: kurimanju
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2423933192439216986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status:
+    level: 0
     ATK_base: 10
     range_base: 2
     AS_base: 1
@@ -120,21 +122,36 @@ MonoBehaviour:
     fireRandomly: 0
     spread: 20
     equidistant: 0
-    projectileSpeed: {x: 5, y: 5}
+    projectileSpeed: {x: 4, y: 4}
     infinitePenetration: 0
     penetration: 0
-    projectileDuration: 5
-  decorations:
-  - decoData: {fileID: 5302194670483044208, guid: 5e0cacb95cea70745bff9e8f1abe479f, type: 3}
-    instance: {fileID: 0}
-    rank: 1
-  - decoData: {fileID: 5302194670483044208, guid: d1f746d817e21dc418a731e32b3fbdf4, type: 3}
-    instance: {fileID: 0}
-    rank: 1
-  - decoData: {fileID: 5302194670483044208, guid: dbdb451f4450fe4479079aaa1c3f8888, type: 3}
-    instance: {fileID: 0}
-    rank: 1
-  - decoData: {fileID: 5302194670483044208, guid: 7a455e10664cdf5429058ebba8ae5b2f, type: 3}
-    instance: {fileID: 0}
-    rank: 1
+    projectileDuration: 0.8
+  decorations: []
   smoke: {fileID: 9206898335192646768, guid: 29d419ca8d9318f459c6b9aaf9d25996, type: 3}
+  particle_fire: {fileID: 8834084877678542698, guid: 5d62bd50344e3554bb6c3ed1860cc0a7, type: 3}
+--- !u!61 &7593194937219450617
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2423933192439216986}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.014153242, y: -0.0023588836}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.83959675, y: 0.71221775}
+  m_EdgeRadius: 0

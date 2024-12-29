@@ -67,7 +67,7 @@ MonoBehaviour:
     projectileSpeed: {x: 3, y: 6}
     infinitePenetration: 0
     penetration: 0
-    projectileDuration: 0.5
+    projectileDuration: 0.4
 --- !u!212 &5866479890358183626
 SpriteRenderer:
   m_ObjectHideFlags: 0
