@@ -3,35 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragAndDropManager : MonoBehaviour
+public class DragAndDropManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    [SerializeField]string itemTagName = "Item";
     [SerializeField]string dropTargetTagName = "Player";
-    GameObject draggingItem;
+    Item draggingItem;
     
-    void Start()
-    {
-        draggingItem = gameObject;
+
+    public void SetItem(Item draggingItem){
+        this.draggingItem = draggingItem;
     }
 
-    void SetItem(){
-
+    public void OnBeginDrag(PointerEventData eventData){
+        PointerEventData pointData = new PointerEventData(EventSystem.current);
+        pointData.position = Input.mousePosition;
+        List<RaycastResult> RayResult = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointData, RayResult);
+        foreach (RaycastResult result in RayResult){
+            if(result.gameObject.name == itemTagName){
+                var item = result.gameObject.GetComponent<Item>();
+                SetItem(item);
+                Debug.Log(result.gameObject.name);
+            }
+        }
     }
 
-    void Update()
-    {
+    public void OnDrag(PointerEventData eventData){
+        // オブジェクトの位置をworldPositionに変更する
+        Vector2 worldPosition = Camera.main.ScreenToWorldPoint(eventData.position);
+        transform.position = worldPosition;
+    }
+
+    public void OnEndDrag(PointerEventData eventData) {
         if(draggingItem != null){
-            if(Input.GetMouseButtonUp(0)){
-                PointerEventData pointData = new PointerEventData(EventSystem.current);
-                pointData.position = Input.mousePosition;
-                List<RaycastResult> RayResult = new List<RaycastResult>();
-                EventSystem.current.RaycastAll(pointData, RayResult);
-                foreach (RaycastResult result in RayResult)
-                {
-                    if(result.gameObject.tag == dropTargetTagName){
-                        Debug.Log(draggingItem);
-                    }
-                    draggingItem = null;
+            PointerEventData pointData = new PointerEventData(EventSystem.current);
+            pointData.position = Input.mousePosition;
+            List<RaycastResult> RayResult = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointData, RayResult);
+            foreach (RaycastResult result in RayResult){
+                if(result.gameObject.tag == dropTargetTagName){
+                    Debug.Log(draggingItem);
                 }
+                draggingItem = null;
             }
         }
     }
