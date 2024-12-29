@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Honemy : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class Honemy : MonoBehaviour
     [SerializeField] EnemyStatus status;
     [SerializeField] GameObject particle_smoke;
     [SerializeField] ParticleSystem particle_slow;
+    [SerializeField] GameObject canvas;
+    [SerializeField] Image HPBar; 
 
     float moveSpeed;
     bool slowed;
@@ -46,7 +49,7 @@ public class Honemy : MonoBehaviour
         if (status.dead) { return true; }//すでに死亡している場合はスキップ
         status.HP -= DMG;
         Debug.Log($"{DMG}ダメージ");
-
+        HPBar.fillAmount = 1f * status.HP / status.maxHP;
 
 
         if (status.HP <= 0)
@@ -54,11 +57,12 @@ public class Honemy : MonoBehaviour
             status.dead = true;
             GetComponent<Collider2D>().enabled = false;
             GetComponent<SpriteRenderer>().enabled = false;
+            canvas.SetActive(false);
             particle_slow.Stop();
             Instantiate(particle_smoke, transform);
 
             GameManager.instance.RemoveEnemy(this);
-            Destroy(gameObject, 3f);
+            Destroy(gameObject,3f);
         }
         return status.HP <= 0;//この攻撃で殺したかを返す
     }
