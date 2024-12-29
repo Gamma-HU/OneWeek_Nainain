@@ -20,9 +20,9 @@ public class Kurimanju : MonoBehaviour
         [Header("=ATK_base x ATK_mul(%)")] public int ATK;
         [Header("=range_base x range_mul(%)")] public float range;
         [Header("攻撃回数/s")] public float attackSpeed;
-        public Vector2 position;
+        public Vector2Int position;
 
-        public void Init(Vector2 pos)
+        public void Init(Vector2Int pos)
         {
             ATK = (ATK_base * ATK_mul / 100f).ToInt();
             range = range_base * range_mul / 100f;
@@ -53,8 +53,10 @@ public class Kurimanju : MonoBehaviour
 
     //SerializeFieldとしているのは、デバッグ時に最初から装備品を待たせたいから
     [SerializeField] List<DecorationParams> decorations;
+    public List<DecorationParams> GetDecorations() { return decorations; }
 
     [SerializeField] GameObject smoke;
+    [SerializeField] GameObject particle_fire;
 
     public ManjuStatus Status() { return status; }
 
@@ -65,7 +67,7 @@ public class Kurimanju : MonoBehaviour
     float timer;
 
     /// <summary>生成時(=配置時に呼ばれる)</summary>
-    public void Init(Vector2 pos, List<DecorationParams> decos,int level)
+    public void Init(Vector2Int pos, List<DecorationParams> decos,int level)
     {
         status.Init(pos);
         status.level = level;
@@ -89,30 +91,6 @@ public class Kurimanju : MonoBehaviour
             d.GetComponent<Decoration>().Init(this, decorations[i].rank);
             decorations[i].instance = d.GetComponent<Decoration>();
         }
-    }
-
-    public void Equip(GameObject deco,int rank)
-    {
-        for (int i= 0;i<decorations.Count;i++)
-        {
-            if (decorations[i].decoData == deco)//すでに装備済みのデコレーションの場合はランク上昇
-            {
-                Debug.Log($"装飾品<{decorations[i].instance.Status().decoName}>のランクを上昇");
-                decorations[i].AddRank(rank);
-                return;
-            }
-        }
-
-        //新しい装備の際は新規作成
-        DecorationParams newDeco = new DecorationParams();
-        newDeco.decoData = deco;
-        newDeco.rank = rank;
-        var d = Instantiate(deco, transform);
-        d.GetComponent<Decoration>().Init(this, rank);
-        newDeco.instance = d.GetComponent<Decoration>();
-
-        Debug.Log($"新たな装飾品<{newDeco.instance.Status().decoName}>を装備");
-        decorations.Add(newDeco);
     }
 
     public void AddNormalAttack(Attack atk)
@@ -222,13 +200,53 @@ public class Kurimanju : MonoBehaviour
         }
     }
 
+    public void Equip(GameObject deco, int rank)
+    {
+        for (int i = 0; i < decorations.Count; i++)
+        {
+            if (decorations[i].decoData == deco)//すでに装備済みのデコレーションの場合はランク上昇
+            {
+                Debug.Log($"装飾品<{decorations[i].instance.Status().decoName}>のランクを上昇{decorations[i].rank}->{decorations[i].rank + rank}");
+                decorations[i].AddRank(rank);
+                return;
+            }
+        }
+
+        //新しい装備の際は新規作成
+        DecorationParams newDeco = new DecorationParams();
+        newDeco.decoData = deco;
+        newDeco.rank = rank;
+        var d = Instantiate(deco, transform);
+        d.GetComponent<Decoration>().Init(this, rank);
+        newDeco.instance = d.GetComponent<Decoration>();
+
+        Debug.Log($"新たな装飾品<{newDeco.instance.Status().decoName}(rank{rank})>を装備");
+        decorations.Add(newDeco);
+    }
+
 
     public void Combine(Kurimanju from)
     {
-        if (from.Status().level == status.level)
+        if (from.Status().level == status.level && from != this)
         {
-            //合成処理
+            Debug.Log("合成");
+            status.level++;
+            foreach (DecorationParams decorationParams in from.GetDecorations())
+            {
+                Equip(decorationParams.decoData, decorationParams.rank);
+            }
+            Instantiate(particle_fire, transform.position, Quaternion.identity);
+            transform.localScale = transform.localScale * 1.15f;
+            if (transform.localScale.x > 1.5) { transform.localScale = new Vector3(1.33f, 1.33f, 1); }
+            from.Disappear();
         }
+    }
+
+    public void Disappear()
+    {
+        ManjuManager.instance.RemoveManju(status.position);
+        Instantiate(smoke, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }
 [System.Serializable]
@@ -271,13 +289,7 @@ public class DecorationParams
 
     public void AddRank(int add)
     {
-        rank+=add;
+        rank += add;
         instance.AddRank(add);
-    }
-
-    public void SetInstance(Decoration i)
-    {
-        Debug.Log("ok");
-        instance = i;
     }
 }

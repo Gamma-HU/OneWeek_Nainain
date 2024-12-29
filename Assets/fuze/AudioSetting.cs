@@ -52,4 +52,15 @@ public class AudioSetting : MonoBehaviour
         SEVolumeText.text = (value * 100).ToString("0.0");
         PlayerPrefs.SetFloat("SEVolume", value);
     }
+
+    public void ResetVolume()
+    {
+        bgmSource.volume = 1.0f;
+        gameSoundContoroller.volume = 1.0f;
+        bgmVolumeText.text = (100.0f).ToString("0.0");
+        SEVolumeText.text = (100.0f).ToString("0.0");
+        Slider[] sliders = FindObjectsOfType<Slider>(true);
+        sliders[1].value = 1.0f;
+        sliders[0].value = 1.0f;
+    }
 }
