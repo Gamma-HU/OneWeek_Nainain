@@ -30,7 +30,7 @@ public class HoneManju : MonoBehaviour
     }
     [SerializeField] ManjuStatus status;
     [SerializeField] GameObject smoke;
-    Enemy target;
+    Honemy target;
     //public struct DecoParams
 
     bool active = false;//ウェーブ中のみtrue
@@ -80,7 +80,7 @@ public class HoneManju : MonoBehaviour
 
     void SetTarget()//ターゲット設定
     {
-        target = Honebone_Test.instance.GetEnemy();
+        target = GameManager.instance.GetEnemy();
     }
     void Attack()//攻撃
     {

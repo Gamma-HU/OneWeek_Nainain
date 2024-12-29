@@ -28,16 +28,81 @@ public class Honemy : MonoBehaviour
     bool slowed;
     float slowTimer;
 
-    [SerializeField]Enemy enemy;//test
-
-    public void Init()
+    public void Init(Vector3[] r, int lvl)
     {
         status.Init();
+        Route = r;
+        Level = lvl;
         moveSpeed = status.moveSpeed;
     }
 
     public bool CheckAlive() { return !status.dead; }
 
+    public bool Damage(int DMG)
+    {
+        if (status.dead) { return true; }//すでに死亡している場合はスキップ
+        status.HP -= DMG;
+        //Debug.Log($"{DMG}ダメージ");
+
+
+
+        if (status.HP <= 0)
+        {
+            status.dead = true;
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
+            particle_slow.Stop();
+            Instantiate(particle_smoke, transform);
+
+            GameManager.instance.RemoveEnemy(this);
+            Destroy(gameObject, 3f);
+        }
+        return status.HP <= 0;//この攻撃で殺したかを返す
+    }
+    public void Slow()
+    {
+        slowed = true;
+        slowTimer = 0;
+        moveSpeed = status.slowedSpeed;
+        particle_slow.Play();
+    }
+
+    GameManager.EnemyType enemyType;
+    public Vector3[] Route;
+    //public float Speed;
+    //public int Hp;
+    public int Level;
+    private int currentTargetIndex = 0; // 現在のルートインデックス
+    //private void Awake()
+    //{
+    //    switch (enemyType)
+    //    {
+    //        case (GameManager.EnemyType)0:
+    //            Hp = 10 * (int)Mathf.Pow(Level, 2);
+    //            Speed = 1;
+    //            break;
+    //        case (GameManager.EnemyType)1:
+    //            Hp = 10 * (int)Mathf.Pow(Level, 2);
+    //            Speed = 1.5f;
+    //            break;
+    //        case (GameManager.EnemyType)2:
+    //            Hp = 20 * (int)Mathf.Pow(Level, 2);
+    //            Speed = 1;
+    //            break;
+    //        case (GameManager.EnemyType)3:
+    //            Hp = 15 * (int)Mathf.Pow(Level, 2);
+    //            Speed = 2;
+    //            break;
+    //        case (GameManager.EnemyType)4:
+    //            Hp = 60 * (int)Mathf.Pow(Level, 2);
+    //            Speed = 0.8f;
+    //            break;
+    //        default:
+    //            Hp = 10 * (int)Mathf.Pow(Level, 2);
+    //            Speed = 1;
+    //            break;
+    //    }
+    //}
     private void Update()
     {
         if (slowed)
@@ -51,36 +116,41 @@ public class Honemy : MonoBehaviour
                 particle_slow.Stop();
             }
         }
-    }
-
-    public bool Damage(int DMG)
-    {
-        if (status.dead) { return true; }//すでに死亡している場合はスキップ
-        status.HP -= DMG;
-        Debug.Log($"{DMG}ダメージ");
 
 
 
-        if (status.HP <= 0)
+        // ターゲットが存在しない場合は何もしない
+        if (Route == null || Route.Length == 0)
+            return;
+
+        // 現在のターゲット座標
+        Vector3 targetPosition = Route[currentTargetIndex];
+
+        // 現在の位置からターゲットへの方向を計算
+        Vector3 direction = (targetPosition - transform.position).normalized;
+
+        // 移動速度を調整して次の位置を計算
+        Vector3 nextPosition = transform.position + direction * moveSpeed * Time.deltaTime;
+
+        // ターゲットに近づいた場合、次のターゲットに移行
+        if (Vector3.Distance(transform.position, targetPosition) < moveSpeed * Time.deltaTime)
         {
-            status.dead = true;
-            GetComponent<Collider2D>().enabled = false;
-            GetComponent<SpriteRenderer>().enabled = false;
-            particle_slow.Stop();
-            Instantiate(particle_smoke, transform);
+            transform.position = targetPosition; // ターゲットにスナップ
 
-            Honebone_Test.instance.RemoveEnemy(enemy);
-            Destroy(gameObject, 3f);
+            // 次のターゲットに進む（ループさせる場合は条件を追加）
+            currentTargetIndex++;
+            if (currentTargetIndex >= Route.Length)
+            {
+                GameManager.instance.RemoveEnemy(this);
+                Destroy(gameObject);
+            }
         }
-        return status.HP <= 0;//この攻撃で殺したかを返す
-    }
-    public void Slow()
-    {
-        slowed = true;
-        slowTimer = 0;
-        moveSpeed = status.slowedSpeed;
-        particle_slow.Play();
+        else
+        {
+            // ターゲットに向かって移動
+            transform.position = nextPosition;
+        }
     }
 
-   
+
 }

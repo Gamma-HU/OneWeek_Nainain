@@ -11,16 +11,16 @@ public class Deco_AddNA : Decoration
     //    manju.AddNormalAttack(attack);
     //}
 
-    public override void OnAttack(Enemy target, Attack atk, bool normalATK)
+    public override void OnAttack(Honemy target, Attack atk, bool normalATK)
     {
         if (normalATK&& chance.Dice())
         {
-            Enemy tar = target;
+            Honemy tar = target;
             switch (attack.targetType)
             {
                 case global::Attack.TargetType.randomTarget:
                     Debug.Log("‚±‚ê‚Íˆê“I‚Èˆ—‚Å‚·");
-                    tar = Honebone_Test.instance.GetEnemies().Choice();
+                    tar = GameManager.instance.GetEnemies().Choice();
                     break;
                 case global::Attack.TargetType.highestHP:
                     Debug.Log("‚±‚ê‚Íˆê“I‚Èˆ—‚Å‚·");

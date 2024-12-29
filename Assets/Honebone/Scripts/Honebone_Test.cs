@@ -23,14 +23,14 @@ public class Honebone_Test : MonoBehaviour
         foreach(Vector2 pos in manjuPos)
         {
             var m = Instantiate(manju, pos, Quaternion.identity);
-            m.GetComponent<Kurimanju>().Init(pos,new List<DecorationParams>());
+            m.GetComponent<Kurimanju>().Init(pos,new List<DecorationParams>(),1);
             m.GetComponent<Kurimanju>().StartBattle();
             majuList.Add(m.GetComponent<Kurimanju>());
         }
 
         foreach(Enemy enemy in enemyTest)
         {
-            enemy.GetComponent<Honemy>().Init();
+            enemy.GetComponent<Honemy>().Init(null,1);
         }
     }
     private void Update()

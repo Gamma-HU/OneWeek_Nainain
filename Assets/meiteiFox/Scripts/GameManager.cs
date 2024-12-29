@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject[] WaveList;
     int currentWave;
     [SerializeField] GameObject[] EnemyPrefabs;
+
+    public static GameManager instance;
+
     public enum Phase
     {
         Preparation,
@@ -38,6 +41,10 @@ public class GameManager : MonoBehaviour
         creampuffs,
         cake
     };
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         cell = new Cell();
@@ -92,8 +99,12 @@ public class GameManager : MonoBehaviour
     void EnemyGen(int enemyIndex, int enemylevel)
     {
         GameObject enemy = Instantiate(EnemyPrefabs[enemyIndex], Route[0], Quaternion.identity);
-        enemy.GetComponent<Enemy>().Route = Route;
-        enemy.GetComponent<Enemy>().Level = enemylevel;
+
+        enemy.GetComponent<Honemy>().Init(Route, enemylevel);
+        enemyList.Add(enemy.GetComponent<Honemy>());
+
+        //enemy.GetComponent<Honemy>().Route = Route;
+        //enemy.GetComponent<Honemy>().Level = enemylevel;
 
     }
 
@@ -133,4 +144,21 @@ public class GameManager : MonoBehaviour
             Gizmos.DrawLine(target + new Vector3(-GizmoSize, GizmoSize, 0), target + new Vector3(-GizmoSize, -GizmoSize, 0));
         }
     }
+
+
+
+
+
+    List<Honemy> enemyList = new List<Honemy>();
+    public void RemoveEnemy(Honemy enemy)
+    {
+        enemyList.Remove(enemy);
+    }
+
+    public Honemy GetEnemy()
+    {
+        if (enemyList.Count > 0) { return enemyList[0]; }
+        return null;
+    }
+    public List<Honemy> GetEnemies() { return enemyList; }
 }
