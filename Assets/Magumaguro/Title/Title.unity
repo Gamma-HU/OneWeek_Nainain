@@ -7119,6 +7119,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 969285209}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1118463639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8450,7 +8462,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3228827634524698609, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3228827634524698609, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -8462,7 +8474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228827634524698609, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3228827634524698609, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
@@ -8479,7 +8491,7 @@ PrefabInstance:
     - target: {fileID: 3228827634524698609, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1105603841}
+      objectReference: {fileID: 969285209}
     - target: {fileID: 3228827634524698609, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
@@ -8498,7 +8510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228827634524698609, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: OnVolumeSettingCloseButtonClicked
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 3228827634524698609, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
@@ -8514,7 +8526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228827634524698609, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: VolumeSettingCloseButtonController, Assembly-CSharp
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3228827634524698609, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
@@ -8567,6 +8579,10 @@ PrefabInstance:
     - target: {fileID: 3644691342708233437, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_AnchorMin.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4651645182904280672, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -26.02
       objectReference: {fileID: 0}
     - target: {fileID: 5219328475886984596, guid: 8125febb25c8c9b4db15ec1e05d0cc1a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -9127,6 +9143,18 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 2041706565}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 969285209}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -9731,6 +9759,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TitleButtonController, Assembly-CSharp
         m_MethodName: OnVolumeSettingButtonClicked
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 969285209}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

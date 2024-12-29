@@ -15,7 +15,7 @@ public class ModeSelectButton : MonoBehaviour
     {
         Debug.Log("Normal Button Clicked");
         //ノーマルモードに遷移する
-        //一旦仮のシーンへ遷移。後で変更する
+        //一旦仮のシーンへ遷移。後で変更してください
         SceneManager.LoadScene("Kari");
         GSController.Maltiply();
     }
@@ -23,7 +23,7 @@ public class ModeSelectButton : MonoBehaviour
     public void OnEndlessButtonClicked()
     {
         Debug.Log("Endless Button Clicked");
-        //エンドレスモードに遷移する
+        //エンドレスモードに遷移するようにしてください
         //SceneManager.LoadScene("");
 
         GSController.Maltiply();
