@@ -6,30 +6,45 @@ using UnityEngine.EventSystems;
 
 public class DragAndDropManager : MonoBehaviour
 {
-    [SerializeField]string dropTargetTagName = "Player";
-    [SerializeField]string conbineItemName = "KurimanjuUI";
+    [SerializeField]string dropTargetTagName = "Player";  // ドラッグされているUIが落とされるKurimanjuUI(Clone)に付けられたタグ。
+
+    [SerializeField]string conbineItemName = "KurimanjuUI(Clone)";
     [SerializeField]string tripleItemName = "Sanbain";
-    [SerializeField]string nonupleItemName = "Nainain";
+    [SerializeField]string nonupleItemName = "Nainain";  // それぞれはUIのGameObjectの名前。
 
     [SerializeField]
-    GameObject draggingUI;
+    GameObject draggingUI; // ドラッグ中のUI要素を表示するGameObject
 
-    Item draggingItem;
-
-    [System.Serializable]
-    public class GouseiCallback : UnityEngine.Events.UnityEvent<Kurimanju>{ }
-    GouseiCallback ConbineEvent;
-    UnityEngine.Events.UnityEvent  TripleEvent;
-    UnityEngine.Events.UnityEvent  NonupleEvent;
+    Image draggingUIImage;
+    string draggingItemName;  // 掴んでいる、使う予定のアイテムの情報。
+    DropPoint draggingItem; //ドロップしたときにGameObjectを呼ぶ
 
     void Start(){
-        
+        draggingUIImage = draggingUI.GetComponent<Image>();
     }
 
-    public void SetDraggingUI(Item draggingItem){
-        this.draggingItem = draggingItem;
-        draggingUI.GetComponent<Image>().enabled = true;
-        draggingUI.GetComponent<Image>().sprite = draggingItem.Image().sprite;
+
+    void ItemDropedActin(Kurimanju target){  // targetが、アイテムが使われるKurimanjuスクリプト。合成先。
+        if(draggingItem.name == conbineItemName){
+
+            Debug.Log("gousei");
+
+            Debug.Log("合成元は" +  draggingItem.Hontai()); // Hontai()ではKurimanjuが取得できる 
+        }else if(draggingItem.name == tripleItemName){
+
+            Debug.Log("sanbai");
+
+        }else if(draggingItem.name == nonupleItemName){
+
+            Debug.Log("kyuubai");
+
+        }
+    }
+
+    public void OnClickItem(GameObject clickItem){
+        this.draggingItemName = clickItem.name;
+        draggingUIImage.enabled = true;
+        draggingUIImage.sprite = clickItem.GetComponent<Image>().sprite;
         Debug.Log("SetDraggingUI!!");
     }
     void Update(){
@@ -39,13 +54,12 @@ public class DragAndDropManager : MonoBehaviour
             List<RaycastResult> RayResult = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointData, RayResult);
             foreach (RaycastResult result in RayResult){
-                //Debug.Log(result.gameObject.name);
-                if(result.gameObject.name == conbineItemName || result.gameObject.name == tripleItemName || result.gameObject.name == nonupleItemName){
+                var getObj = result.gameObject;
+                if(getObj.name == conbineItemName || getObj.name == tripleItemName || getObj.name == nonupleItemName){
 
-                    var item = result.gameObject.GetComponent<Item>();
-                    SetDraggingUI(item);
+                    OnClickItem(getObj);
                 }
-                Debug.Log(result.gameObject.name + "is target? ==" + (result.gameObject.name == conbineItemName || result.gameObject.name == tripleItemName || result.gameObject.name == nonupleItemName));
+                //Debug.Log(result.gameObject.name + "is target? ==" + (result.gameObject.tag == dropTargetTagName));
             }
         }
         if(Input.GetMouseButtonUp(0)){
@@ -56,21 +70,16 @@ public class DragAndDropManager : MonoBehaviour
                 EventSystem.current.RaycastAll(pointData, RayResult);
                 foreach (RaycastResult result in RayResult){
                     if(result.gameObject.tag == dropTargetTagName){
-                        if(draggingItem.name == conbineItemName){
-                            Debug.Log("gousei");
-                            Debug.Log(draggingItem.Hontai());
-                        }else if(draggingItem.name == tripleItemName){
-                            Debug.Log("sanbai");
-                        }else if(draggingItem.name == nonupleItemName){
-                            Debug.Log("kyuubai");
-                        }
-                        Debug.Log(draggingItem);
+
+                        Kurimanju target = result.gameObject.GetComponent<DropPoint>().Hontai(); // これこそがアイテムが使われたり合成されたりするKurimanjuスクリプト
+
+                        ItemDropedActin(target);
                         draggingItem = null;
                     }
                 }
             }
             draggingItem = null;
-            draggingUI.GetComponent<Image>().enabled = false;
+            draggingUIImage.enabled = false;
         }
     }
 }

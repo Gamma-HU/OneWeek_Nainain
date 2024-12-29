@@ -3,21 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class KurimanjuUIController : MonoBehaviour
+public class KurimanjuUIController : MonoBehaviour // それぞれの栗饅頭についていると想定。
 {
     [SerializeField]
-    GameObject kurimanjuUIPrefab;
+    GameObject kurmanjuUIs;  // Fuze/Item/ItemUICanvasの子としてある。　生成されるUIの親になる
+
     [SerializeField]
-    GameObject canvas;
-
-    RectTransform parentRectTransform;
-
-    GameObject kurimanju;
-    GameObject kurimanjuUI;
+    GameObject kurimanjuUIPrefab;  // 生成すべきKurimanjuUIのプレハブ。 Fuze/Item/ItemData/kurimanjuUIにある。
+    Kurimanju kurimanju;  // この栗饅頭についているKurimanjuスクリプト
+    GameObject kurimanjuUI; // 生成されたKurimanjuUIを格納
 
     void Start(){
-        kurimanju = gameObject;
-        parentRectTransform = canvas.transform as RectTransform;
+
+        kurimanju = GetComponent<Kurimanju>(); // この栗饅頭についているKurimanju
         Debug.Log("CreateKurimanjuUI!!!");
         CreateKurimanjuUI();
         SetKurimanjuUIPosition();
@@ -25,8 +23,8 @@ public class KurimanjuUIController : MonoBehaviour
 
     void CreateKurimanjuUI(){
         
-        kurimanjuUI = Instantiate(kurimanjuUIPrefab, Vector3.zero, Quaternion.identity, canvas.transform as RectTransform);
-        kurimanjuUI.GetComponent<Item>().SetHontai(GetComponent<Kurimanju>());
+        kurimanjuUI = Instantiate(kurimanjuUIPrefab, Vector3.zero, Quaternion.identity, kurmanjuUIs.transform);  // ItemUICanvasの子のkurmanjuUIsの子として生成される
+        kurimanjuUI.GetComponent<DropPoint>().SetHontai(kurimanju); // KurimanjuUIにこのオブジェクトのKurimanjuスクリプトを渡す
     }
 
     void DestroyKurimanjuUI(){
@@ -43,7 +41,7 @@ public class KurimanjuUIController : MonoBehaviour
 
         Vector2 result = Vector2.zero;
         var screenPosition = Camera.main.WorldToScreenPoint(kurimanju.transform.position);
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRectTransform, screenPosition, Camera.main, out result);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(kurmanjuUIs.transform as RectTransform, screenPosition, Camera.main, out result);
         
         kurimanjuUIRectTransform.anchoredPosition3D  = new Vector3 (result.x, result.y, 0);
     }

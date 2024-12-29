@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 853002645393931768}
   - component: {fileID: 4714964824107642916}
   - component: {fileID: 8484954887717121406}
-  - component: {fileID: -1368313817511694729}
+  - component: {fileID: 3322423165267768338}
   m_Layer: 5
   m_Name: Sanbain
   m_TagString: Untagged
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &-1368313817511694729
+--- !u!114 &3322423165267768338
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,6 +86,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 601165022321925259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48742fa56699c7f458d6cd97d6c8f7e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 65b4f2453c96f374db7fe71704d0fe3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
