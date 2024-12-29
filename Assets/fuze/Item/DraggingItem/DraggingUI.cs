@@ -4,14 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class DraggingUI : MonoBehaviour, IDragHandler
+public class DraggingUI : MonoBehaviour
 {
     Image image;
 
     void Start()
     {
         image = GetComponent<Image>();
-        image.enabled = false;
     }
 
     public Image Image(){
@@ -21,10 +20,11 @@ public class DraggingUI : MonoBehaviour, IDragHandler
     public void SetSprite(Sprite sprite){
         image.sprite = sprite;
     }
-
-    public void OnDrag(PointerEventData eventData){
-        // オブジェクトの位置をworldPositionに変更する
-        Vector2 worldPosition = Camera.main.ScreenToWorldPoint(eventData.position);
-        transform.position = worldPosition;
+    void Update(){
+        if(Input.GetMouseButton(0)){
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            worldPosition.z = 0;
+            transform.position = worldPosition;
+        }
     }
 }

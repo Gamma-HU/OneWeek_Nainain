@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4978525861608200038}
   m_Layer: 5
   m_Name: KurimanjuUI
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 700549609, guid: c8e7a91d68750ea428d704b03ee02887, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2934199d90e41d84cace1490b79204c7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -89,8 +89,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48742fa56699c7f458d6cd97d6c8f7e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onDropEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  image: {fileID: 0}
-  hontai: {fileID: 0}

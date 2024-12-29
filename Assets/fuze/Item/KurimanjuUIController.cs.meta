@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 3fb911a7a4b460e44bb47849277406f9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - kurimanjuUIPrefab: {fileID: 601165022321925259, guid: 8eb1614fb05b62243855ab4560f2c93a, type: 3}
+  - canvas: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
