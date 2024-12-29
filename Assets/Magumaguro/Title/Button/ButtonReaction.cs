@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ButtonReaction : MonoBehaviour
 {
+    private GameSoundController GSController;
     void Start()
     {
+        GSController = GameObject.Find("Game Sound").GetComponent<GameSoundController>();
         /*
         // 事前にButtonにEventTriggerコンポーネントを追加しておく
         var trigger = this.GetComponent<EventTrigger>();
@@ -41,6 +43,7 @@ public class ButtonReaction : MonoBehaviour
     public void PointerDown()
     {
         this.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
+        GSController.Maltiply();
     }
 
     public void PointerUp()

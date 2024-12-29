@@ -17,7 +17,7 @@ public class ModeSelectButton : MonoBehaviour
         //ノーマルモードに遷移する
         //一旦仮のシーンへ遷移。後で変更してください
         SceneManager.LoadScene("Kari");
-        GSController.Maltiply();
+        //GSController.Maltiply();
     }
 
     public void OnEndlessButtonClicked()
@@ -26,7 +26,7 @@ public class ModeSelectButton : MonoBehaviour
         //エンドレスモードに遷移するようにしてください
         //SceneManager.LoadScene("");
 
-        GSController.Maltiply();
+        //GSController.Maltiply();
 
     }
 }
