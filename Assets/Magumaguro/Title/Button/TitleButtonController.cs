@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class TitleButtonController : MonoBehaviour
 {
-    public GameObject VolumePanel;
+    private static Transform parent;
+    private static Transform child;
+    private GameObject VolumePanel;
     void Start()
     {
-        
+        parent = GameObject.Find("VolumeSettingCanvas").transform;
+        child = parent.Find("VolumeSettingUI");
+        VolumePanel = child.gameObject;
     }
 
     void Update()

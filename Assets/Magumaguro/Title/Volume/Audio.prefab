@@ -190,6 +190,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054847da2e0f240478419a2a9d7083c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmVolumeText: {fileID: 5368868906561026846, guid: beeabe1435857d240900aa7a14e62a22, type: 3}
+  SEVolumeText: {fileID: 2445174922753880157, guid: b3e0a5fdc26f63a4abe4b9b32c489fc0, type: 3}
+  bgmValue: 1
+  seValue: 1
 --- !u!1 &8374605597688443417
 GameObject:
   m_ObjectHideFlags: 0
