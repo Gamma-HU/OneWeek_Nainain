@@ -10,11 +10,15 @@ public class TitleButtonController : MonoBehaviour
     private GameObject VolumePanel;
 
     public GameObject EndlessButton;
+
+    private AudioSetting AudioSetting;
     void Start()
     {
         parent = GameObject.Find("VolumeSettingCanvas").transform;
         child = parent.Find("VolumeSettingUI");
         VolumePanel = child.gameObject;
+
+        AudioSetting = GameObject.Find("Audio").GetComponent<AudioSetting>();
     }
 
     void Update()
@@ -36,5 +40,6 @@ public class TitleButtonController : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         EndlessButton.GetComponent<Button>().interactable = false;
+        AudioSetting.ResetVolume();
     }
 }
