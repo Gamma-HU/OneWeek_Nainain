@@ -18,7 +18,7 @@ public class DragAndDropManager : MonoBehaviour
 
     [System.Serializable]
     public class GouseiCallback : UnityEngine.Events.UnityEvent<Kurimanju>{ }
-    GouseiCallback ConbineiEvent;
+    GouseiCallback ConbineEvent;
     UnityEngine.Events.UnityEvent  TripleEvent;
     UnityEngine.Events.UnityEvent  NonupleEvent;
 
@@ -27,9 +27,10 @@ public class DragAndDropManager : MonoBehaviour
     }
 
     public void SetDraggingUI(Item draggingItem){
-        draggingUI.GetComponent<Image>().enabled = true;
         this.draggingItem = draggingItem;
+        draggingUI.GetComponent<Image>().enabled = true;
         draggingUI.GetComponent<Image>().sprite = draggingItem.Image().sprite;
+        Debug.Log("SetDraggingUI!!");
     }
     void Update(){
         if(Input.GetMouseButtonDown(0)){
@@ -44,6 +45,7 @@ public class DragAndDropManager : MonoBehaviour
                     var item = result.gameObject.GetComponent<Item>();
                     SetDraggingUI(item);
                 }
+                Debug.Log(result.gameObject.name + "is target? ==" + (result.gameObject.name == conbineItemName || result.gameObject.name == tripleItemName || result.gameObject.name == nonupleItemName));
             }
         }
         if(Input.GetMouseButtonUp(0)){
@@ -54,19 +56,20 @@ public class DragAndDropManager : MonoBehaviour
                 EventSystem.current.RaycastAll(pointData, RayResult);
                 foreach (RaycastResult result in RayResult){
                     if(result.gameObject.tag == dropTargetTagName){
-                        if(result.gameObject.name == conbineItemName){
+                        if(draggingItem.name == conbineItemName){
                             Debug.Log("gousei");
                             Debug.Log(draggingItem.Hontai());
-                        }else if(result.gameObject.name == tripleItemName){
+                        }else if(draggingItem.name == tripleItemName){
                             Debug.Log("sanbai");
-                        }else if(result.gameObject.name == nonupleItemName){
-                            Debug.Log("tyuubai");
+                        }else if(draggingItem.name == nonupleItemName){
+                            Debug.Log("kyuubai");
                         }
                         Debug.Log(draggingItem);
                         draggingItem = null;
                     }
                 }
             }
+            draggingItem = null;
             draggingUI.GetComponent<Image>().enabled = false;
         }
     }
