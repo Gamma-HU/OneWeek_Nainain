@@ -209,4 +209,19 @@ public static class HoneboneExtensions
     {
         return new Vector2Int(pos % 9, pos / 9);
     }
+
+    /// <summary>マス座標が盤外にあるかをチェック</summary>
+    public static bool OutOfBoard(this Vector2Int vector)
+    {
+        if (vector.x < 0) { return true; }
+        if (vector.x > 8) { return true; }
+        if (vector.y < 0) { return true; }
+        if (vector.y > 8) { return true; }
+        return false;
+    }
+    /// <summary>マス座標が盤外にあるかをチェック</summary>
+    public static bool OutOfBoard(this int posInt)
+    {
+        return posInt.IntToVector().OutOfBoard();
+    }
 }

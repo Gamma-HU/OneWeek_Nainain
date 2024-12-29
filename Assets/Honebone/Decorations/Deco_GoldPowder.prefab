@@ -64,7 +64,7 @@ MonoBehaviour:
     fireRandomly: 0
     spread: 10
     equidistant: 0
-    projectileSpeed: {x: 5, y: 5}
+    projectileSpeed: {x: 4, y: 4}
     infinitePenetration: 0
     penetration: 2
     projectileDuration: 3
