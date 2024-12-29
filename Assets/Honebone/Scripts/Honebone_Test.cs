@@ -30,7 +30,7 @@ public class Honebone_Test : MonoBehaviour
 
         foreach(Enemy enemy in enemyTest)
         {
-            enemy.GetComponent<Honemy>().Init();
+            enemy.GetComponent<Honemy>().Init(null,1);
         }
     }
     private void Update()
@@ -44,15 +44,15 @@ public class Honebone_Test : MonoBehaviour
         }    
     }
 
-    public void RemoveEnemy(Enemy enemy)
-    {
-        enemyTest.Remove(enemy);
-    }
+    //public void RemoveEnemy(Enemy enemy)
+    //{
+    //    enemyTest.Remove(enemy);
+    //}
 
-    public Enemy GetEnemy()
-    {
-        if (enemyTest.Count > 0) { return enemyTest[0]; }
-        return null;
-    }
-    public List<Enemy> GetEnemies() { return enemyTest; }
+    //public Enemy GetEnemy()
+    //{
+    //    if (enemyTest.Count > 0) { return enemyTest[0]; }
+    //    return null;
+    //}
+    //public List<Enemy> GetEnemies() { return enemyTest; }
 }

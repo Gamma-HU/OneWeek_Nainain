@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     Attack attack;
 
     Transform tf;
-    protected Enemy target;
+    protected Honemy target;
     Transform targetTF;
     protected Vector3 targetPos;
     Vector3 targetPosDiff;
@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
     List<int> hitEnemies;
     int hitCount;
     bool disabled;
-    public void Init(Kurimanju k, Enemy e, Attack a)
+    public void Init(Kurimanju k, Honemy e, Attack a)
     {
         attacker = k;
         attack = a;
@@ -82,7 +82,6 @@ public class Projectile : MonoBehaviour
             {
                 hitCount++;
                 hitEnemies.Add(collision.GetInstanceID());
-                Enemy hit = collision.GetComponent<Enemy>();
                 Honemy honehit= collision.GetComponent<Honemy>();
                 OnHit(honehit);
 

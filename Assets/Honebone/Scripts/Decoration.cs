@@ -32,7 +32,7 @@ public class Decoration : MonoBehaviour
         OnAddRank(add);
     }
 
-    public virtual void OnAttack(Enemy target,Attack atk,bool normalATK) { }
+    public virtual void OnAttack(Honemy target,Attack atk,bool normalATK) { }
 
     public virtual void OnInit() { }
     public virtual void OnAddRank(int add) { }
