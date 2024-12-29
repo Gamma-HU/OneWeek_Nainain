@@ -200,4 +200,13 @@ public static class HoneboneExtensions
 
         return shuffle;
     }
+
+    public static int VectorToInt(this Vector2Int pos)
+    {
+        return pos.y * 9 + pos.x;
+    }
+    public static Vector2Int IntToVector(this int pos)
+    {
+        return new Vector2Int(pos % 9, pos / 9);
+    }
 }

@@ -56,12 +56,14 @@ public class GameManager : MonoBehaviour
     {
         if (currentPhase == Phase.Preparation)
         {
+            ManjuManager.instance.StartBattle();
             currentPhase = Phase.Invasion;
             StartCoroutine(Invasion());
             Debug.Log("Switched to Invasion Phase");
         }
         else
         {
+            ManjuManager.instance.EndBattle();
             currentPhase = Phase.Preparation;
             if (mode == GameMode.normal && currentWave == 20)
             {

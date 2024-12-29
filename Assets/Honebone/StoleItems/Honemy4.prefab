@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 73943360, guid: 8e63f4c565d27434686e5acd3bf5b9e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -103,15 +103,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status:
-    maxHP: 50
-    moveSpeed: 0
+    maxHP: 75
+    moveSpeed: 2
     slowedSpeed: 0
     slowDuration: 3
     dead: 0
     HP: 0
   particle_smoke: {fileID: 9206898335192646768, guid: 29d419ca8d9318f459c6b9aaf9d25996, type: 3}
   particle_slow: {fileID: 2390818544027527736}
-  enemy: {fileID: 0}
+  Route: []
+  Level: 0
 --- !u!95 &4993954046956316568
 Animator:
   serializedVersion: 4
