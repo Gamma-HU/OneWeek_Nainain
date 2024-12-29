@@ -107,6 +107,7 @@ MonoBehaviour:
     range_mul: 100
     AS_mul: 100
     spread: 0
+    exPellet: 0
     ATK: 0
     range: 0
     attackSpeed: 0.8

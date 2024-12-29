@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 133166121128002862}
-  - component: {fileID: 1787183249984637335}
+  - component: {fileID: 461255191370916568}
   - component: {fileID: 5866479890358183626}
   m_Layer: 0
-  m_Name: Deco_StrawBerry
+  m_Name: Deco_MiniManju
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1787183249984637335
+--- !u!114 &461255191370916568
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,32 +42,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5302194670483044208}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de3d6e6a49b6eb34ead344101d600ffe, type: 3}
+  m_Script: {fileID: 11500000, guid: 714df917a5ba3a44694d5fa9068d2e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   decoStatus:
-    decoName: "\u30A4\u30C1\u30B4"
-    decoInfo: "\u901A\u5E38\u653B\u6483\u6642\u3001\u305F\u307E\u306B\u8CAB\u901A\u5F3E\u3092\u653E\u3064"
+    decoName: "\u30DF\u30CB\u9945\u982D"
+    decoInfo: "\u5168\u3066\u306E\u653B\u6483\u306E\u5F3E\u304C1\u767A\u5897\u3048\u308B"
     flavorText: 
     canStack: 0
     rank: 1
-    rarity: 1
-  chance: 25
-  attack:
-    projectile: {fileID: 7663961578913621665, guid: 94e465cd312fe35488b481e29dc48371, type: 3}
-    targetType: 0
-    DMGMod: 100
-    weight: 100
-    followTargetSpeed: 0
-    followCurrentTarget: 0
-    pellets: 1
-    fireRandomly: 0
-    spread: 5
-    equidistant: 0
-    projectileSpeed: {x: 8, y: 8}
-    infinitePenetration: 1
-    penetration: 0
-    projectileDuration: 4
+    rarity: 2
 --- !u!212 &5866479890358183626
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -109,7 +93,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b5b4eeea72a55bf41a29e8f51051f419, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5566fa06742dd2b4e886f82b6cfbb580, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
