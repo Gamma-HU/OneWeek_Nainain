@@ -31,8 +31,10 @@ public class VolumeSettingUIController : MonoBehaviour
         
     void Start()
     {
-        /*
         Slider[] sliders = FindObjectsOfType<Slider>(true);
+        sliders[0].value = PlayerPrefs.GetFloat("SEVolume", 1.0f);
+        sliders[1].value = PlayerPrefs.GetFloat("BGMVolume", 1.0f);
+        /*
         sliders[1].onValueChanged.AddListener(AS.ChangeBGMVolume);
         sliders[0].onValueChanged.AddListener(AS.ChangeGameSoundVolume);
 

@@ -30,6 +30,8 @@ public class AudioSetting : MonoBehaviour
         bgmSource = sources[0];
         gameSoundContoroller = GetComponentInChildren<GameSoundController>();
         SceneManager.sceneLoaded += SceneLoaded;
+        bgmSource.volume = PlayerPrefs.GetFloat("BGMVolume", 1.0f);
+        gameSoundContoroller.volume = PlayerPrefs.GetFloat("SEVolume", 1.0f);
     }
 
     void SceneLoaded (Scene nextScene, LoadSceneMode mode) {
@@ -43,9 +45,11 @@ public class AudioSetting : MonoBehaviour
     public void ChangeBGMVolume(float value){
         bgmSource.volume = value;
         bgmVolumeText.text = (value * 100).ToString("0.0");
+        PlayerPrefs.SetFloat("BGMVolume", value);
     }
     public void ChangeGameSoundVolume(float value){
         gameSoundContoroller.volume = value;
         SEVolumeText.text = (value * 100).ToString("0.0");
+        PlayerPrefs.SetFloat("SEVolume", value);
     }
 }
