@@ -45,8 +45,12 @@ public class Honebone_Test : MonoBehaviour
             {
                 for(int i = 0; i < 81; i++)
                 {
-                    ManjuManager.instance.SpawnManju(i.IntToVector(), new List<DecorationParams>());
+                    ManjuManager.instance.SpawnManju(i.IntToVector(), new List<DecorationParams>(),1);
                 }
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                FindObjectOfType<GameManager>().GameStart(new Vector2Int(4, 3));
             }
         }    
     }

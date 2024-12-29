@@ -6,6 +6,7 @@ public class Kurimanju : MonoBehaviour
     [System.Serializable]
     public class ManjuStatus
     {
+        public int level;
         public int ATK_base;
         public float range_base;
         public float AS_base;
@@ -64,10 +65,11 @@ public class Kurimanju : MonoBehaviour
     float timer;
 
     /// <summary>生成時(=配置時に呼ばれる)</summary>
-    public void Init(Vector2 pos, List<DecorationParams> decos)
+    public void Init(Vector2 pos, List<DecorationParams> decos,int level)
     {
-
         status.Init(pos);
+        status.level = level;
+        //levelに応じた強化処理
         Instantiate(smoke, transform);
         normalAttacks = new List<Attack>();
         AddNormalAttack(attack);//デフォルトの通常攻撃をプールに追加
@@ -217,6 +219,15 @@ public class Kurimanju : MonoBehaviour
         foreach(DecorationParams decorationParams in decorations)
         {
             decorationParams.instance.OnAttack(finalTarget, atk, normalAttack);
+        }
+    }
+
+
+    public void Combine(Kurimanju from)
+    {
+        if (from.Status().level == status.level)
+        {
+            //合成処理
         }
     }
 }
