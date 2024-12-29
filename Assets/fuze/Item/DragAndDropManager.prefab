@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1404406230652192868}
+  - component: {fileID: 5098244304320820516}
   - component: {fileID: -6953393551412848085}
   m_Layer: 0
   m_Name: DragAndDropManager
@@ -17,8 +17,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1404406230652192868
-Transform:
+--- !u!224 &5098244304320820516
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -32,6 +32,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &-6953393551412848085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,9 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74847604054d5c44190b129412becc3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemTagName: Item
   dropTargetTagName: Player
   conbineItemName: KurimanjuUI
   tripleItemName: Sanbain
   nonupleItemName: Nainain
-  draggingUIObj: {fileID: 2467260408675279022, guid: 8a0b6cd8ea9d7914b88b5777169a171b, type: 3}
+  draggingUIPrefab: {fileID: 0}

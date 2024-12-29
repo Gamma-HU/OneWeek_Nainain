@@ -4,72 +4,70 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class DragAndDropManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class DragAndDropManager : MonoBehaviour
 {
-    [SerializeField]string itemTagName = "Item";
     [SerializeField]string dropTargetTagName = "Player";
     [SerializeField]string conbineItemName = "KurimanjuUI";
     [SerializeField]string tripleItemName = "Sanbain";
     [SerializeField]string nonupleItemName = "Nainain";
 
     [SerializeField]
-    GameObject draggingUIObj;
-    DraggingUI draggingUI;
+    GameObject draggingUI;
 
     Item draggingItem;
 
     [System.Serializable]
-    public class GouseiCallback : UnityEngine.Events.UnityEvent<Kurimanju>{}
+    public class GouseiCallback : UnityEngine.Events.UnityEvent<Kurimanju>{ }
     GouseiCallback ConbineiEvent;
     UnityEngine.Events.UnityEvent  TripleEvent;
     UnityEngine.Events.UnityEvent  NonupleEvent;
 
     void Start(){
-        draggingUI = draggingUIObj.GetComponent<DraggingUI>();
+        
     }
 
     public void SetDraggingUI(Item draggingItem){
+        draggingUI.GetComponent<Image>().enabled = true;
         this.draggingItem = draggingItem;
-        draggingUI.SetSprite(draggingItem.Image().sprite);
+        draggingUI.GetComponent<Image>().sprite = draggingItem.Image().sprite;
     }
-
-    public void OnBeginDrag(PointerEventData eventData){
-        PointerEventData pointData = new PointerEventData(EventSystem.current);
-        pointData.position = Input.mousePosition;
-        List<RaycastResult> RayResult = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(pointData, RayResult);
-        foreach (RaycastResult result in RayResult){
-            if(result.gameObject.name == itemTagName){
-                var item = result.gameObject.GetComponent<Item>();
-                SetDraggingUI(item);
-                Debug.Log(result.gameObject.name);
-            }
-        }
-    }
-
-    public void OnDrag(PointerEventData eventData){
-    }
-
-    public void OnEndDrag(PointerEventData eventData) {
-        if(draggingItem != null){
+    void Update(){
+        if(Input.GetMouseButtonDown(0)){
             PointerEventData pointData = new PointerEventData(EventSystem.current);
             pointData.position = Input.mousePosition;
             List<RaycastResult> RayResult = new List<RaycastResult>();
             EventSystem.current.RaycastAll(pointData, RayResult);
             foreach (RaycastResult result in RayResult){
-                if(result.gameObject.tag == dropTargetTagName){
-                    if(result.gameObject.name == conbineItemName){
-                        Debug.Log("gousei");
-                        Debug.Log(draggingItem.Hontai());
-                    }else if(result.gameObject.name == tripleItemName){
-                        Debug.Log("sanbai");
-                    }else if(result.gameObject.name == nonupleItemName){
-                        Debug.Log("tyuubai");
-                    }
-                    Debug.Log(draggingItem);
-                    draggingItem = null;
+                //Debug.Log(result.gameObject.name);
+                if(result.gameObject.name == conbineItemName || result.gameObject.name == tripleItemName || result.gameObject.name == nonupleItemName){
+
+                    var item = result.gameObject.GetComponent<Item>();
+                    SetDraggingUI(item);
                 }
             }
+        }
+        if(Input.GetMouseButtonUp(0)){
+            if(draggingItem != null){
+                PointerEventData pointData = new PointerEventData(EventSystem.current);
+                pointData.position = Input.mousePosition;
+                List<RaycastResult> RayResult = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(pointData, RayResult);
+                foreach (RaycastResult result in RayResult){
+                    if(result.gameObject.tag == dropTargetTagName){
+                        if(result.gameObject.name == conbineItemName){
+                            Debug.Log("gousei");
+                            Debug.Log(draggingItem.Hontai());
+                        }else if(result.gameObject.name == tripleItemName){
+                            Debug.Log("sanbai");
+                        }else if(result.gameObject.name == nonupleItemName){
+                            Debug.Log("tyuubai");
+                        }
+                        Debug.Log(draggingItem);
+                        draggingItem = null;
+                    }
+                }
+            }
+            draggingUI.GetComponent<Image>().enabled = false;
         }
     }
 }
