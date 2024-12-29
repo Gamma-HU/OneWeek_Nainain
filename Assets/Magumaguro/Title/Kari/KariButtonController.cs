@@ -22,5 +22,10 @@ public class KariButtonController : MonoBehaviour
         SceneManager.LoadScene("Title");
     }
 
+    public void OnUnlockButtonClick()
+    {
+        PlayerPrefs.SetInt("EndlessFlag", 1);
+    }
+
 
 }

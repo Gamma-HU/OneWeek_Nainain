@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8608435563058282553}
   - component: {fileID: 6395433801572134330}
   m_Layer: 0
-  m_Name: Wave2
+  m_Name: HoneWave2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

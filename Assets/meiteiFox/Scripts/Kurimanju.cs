@@ -57,7 +57,7 @@ public class Kurimanju : MonoBehaviour
 
     public ManjuStatus Status() { return status; }
 
-    Enemy target;
+    Honemy target;
     //public struct DecoParams
 
     bool active = false;//ウェーブ中のみtrue
@@ -159,19 +159,19 @@ public class Kurimanju : MonoBehaviour
 
     void SetTarget()//ターゲット設定
     {
-        target = Honebone_Test.instance.GetEnemy();
+        target = GameManager.instance.GetEnemy();
     }
     /// <summary>
     /// 攻撃を行う 装飾品の効果で攻撃するときもこれを呼ぶ
     /// </summary>
     /// <param name="tar">攻撃対象</param>
     /// <param name="atk">攻撃情報</param>
-    public void Attack(Enemy tar, Attack atk,bool normalAttack=false)//攻撃
+    public void Attack(Honemy tar, Attack atk,bool normalAttack=false)//攻撃
     {
         //if (status.turretData.SE_Fire != null) { soundManager.PlaySE(transform.position, status.turretData.SE_Fire); }
         if (atk.pellets == 0) { Debug.Log("発射弾数が0です！"); }
         if (atk.projectileDuration <= 0) { Debug.Log("持続時間が0です！"); }
-        Enemy finalTarget;
+        Honemy finalTarget;
         if (!normalAttack) { finalTarget = tar; }
         else
         {
@@ -179,7 +179,7 @@ public class Kurimanju : MonoBehaviour
             {
                 case global::Attack.TargetType.randomTarget:
                     Debug.Log("これは一時的な処理です");
-                    finalTarget = Honebone_Test.instance.GetEnemies().Choice();
+                    finalTarget = GameManager.instance.GetEnemies().Choice();
                     break;
                 case global::Attack.TargetType.highestHP:
                     Debug.Log("これは一時的な処理です");
