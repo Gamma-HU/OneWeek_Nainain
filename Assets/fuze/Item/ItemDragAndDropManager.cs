@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class ItemDragAndDropManager : MonoBehaviour
 {
+    [System.Serializable] private class ItemConsumeEvent : UnityEvent<string> { }
+    [SerializeField] private ItemConsumeEvent itemConsumeEvent;  // アイテム数を減らす関数を登録する。
+
     [SerializeField]string dropTargetTagName = "Player";  // ドラッグされているUIが落とされるKurimanjuUI(Clone)に付けられたタグ。
 
     [SerializeField]string conbineItemName = "KurimanjuUI(Clone)";
@@ -31,7 +35,7 @@ public class ItemDragAndDropManager : MonoBehaviour
 
             Debug.Log("合成元は" +  dropPoint.Hontai()); // Hontai()ではKurimanjuが取得できる 
         }else if(draggingItemName == tripleItemName){
-
+            
             Debug.Log("sanbai");
 
         }else if(draggingItemName == nonupleItemName){
@@ -39,6 +43,8 @@ public class ItemDragAndDropManager : MonoBehaviour
             Debug.Log("kyuubai");
 
         }
+        itemConsumeEvent.Invoke(draggingItemName);
+
         Debug.Log(draggingItemName);
     }
 
@@ -46,7 +52,6 @@ public class ItemDragAndDropManager : MonoBehaviour
         this.draggingItemName = clickItem.name;
         draggingUIImage.enabled = true;
         draggingUIImage.sprite = clickItem.GetComponent<Image>().sprite;
-        Debug.Log("SetDraggingUI!!");
     }
     void Update(){
         if(Input.GetMouseButtonDown(0)){
@@ -82,4 +87,6 @@ public class ItemDragAndDropManager : MonoBehaviour
             draggingUIImage.enabled = false;
         }
     }
+
+    
 }
