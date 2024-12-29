@@ -49,8 +49,9 @@ GameObject:
   - component: {fileID: 4613702663683282716}
   - component: {fileID: 218468254426229171}
   - component: {fileID: 357861385836033602}
+  - component: {fileID: 4687385171043124602}
   m_Layer: 0
-  m_Name: ItemUICanvas
+  m_Name: DragAndDropUICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,6 +159,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4687385171043124602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5700735189807678493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f42e590ee346e3408447792cc67116d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropTargetTagName: Player
+  DecorationUIName: DecorationPanel(Clone)
+  draggingUI: {fileID: 2467260408675279022, guid: 8a0b6cd8ea9d7914b88b5777169a171b, type: 3}
 --- !u!1001 &7745618084755546010
 PrefabInstance:
   m_ObjectHideFlags: 0
