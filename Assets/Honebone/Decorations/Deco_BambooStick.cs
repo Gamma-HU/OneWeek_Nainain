@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Deco_BambooStick : Decoration
 {
-    [SerializeField] float rangePerRank;
+    [SerializeField,Header("Ë’ö‹——£‘‰Á—Ê(%)/ƒ‰ƒ“ƒN")] float rangePerRank;
     int curentrank;
     public override void OnInit()
     {

@@ -47,7 +47,8 @@ public class Honebone_Test : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                ManjuManager.instance.GetManjuList().Choice().Equip(equip.Choice(), 1);
+                //ManjuManager.instance.GetManjuList().Choice().Equip(equip.Choice(), 1);
+                ManjuManager.instance.GetManjuList()[0].Equip(equip[0], 1);
             }
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   decoStatus:
     decoName: "\u30A4\u30C1\u30B4"
-    decoInfo: "\u901A\u5E38\u653B\u6483\u6642\u3001\u305F\u307E\u306B\u8CAB\u901A\u5F3E\u3092\u653E\u3064"
+    decoInfo: "\u901A\u5E38\u653B\u6483\u6642\u3001\u305F\u307E\u306B\u8CAB\u901A\u5F3E\u3092\u653E\u3064\n\u30E9\u30F3\u30AF\u306B\u5FDC\u3058\u3066\u5A01\u529B\u304C\u5897\u52A0"
     flavorText: 
     canStack: 0
     rank: 1
@@ -68,6 +68,9 @@ MonoBehaviour:
     infinitePenetration: 1
     penetration: 0
     projectileDuration: 4
+  chancePerRank: 0
+  DMGModPerRank: 150
+  pelletPerRank: 0
 --- !u!212 &5866479890358183626
 SpriteRenderer:
   m_ObjectHideFlags: 0

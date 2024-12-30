@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   decoStatus:
     decoName: "\u7802\u7CD6"
-    decoInfo: "\u901A\u5E38\u653B\u6483\u6642\u3001\u30E9\u30F3\u30C0\u30E0\u306A\u65752\u4F53\u306B\u8FFD\u52A0\u653B\u6483\u3092\u3059\u308B"
+    decoInfo: "\u901A\u5E38\u653B\u6483\u6642\u3001\u30E9\u30F3\u30C0\u30E0\u306A\u65752\u4F53\u306B\u8FFD\u52A0\u653B\u6483\u3092\u3059\u308B\n\u30E9\u30F3\u30AF\u306B\u5FDC\u3058\u3066\u5A01\u529B\u304C\u5897\u52A0"
     flavorText: 
     canStack: 0
     rank: 1
@@ -67,6 +67,7 @@ MonoBehaviour:
     infinitePenetration: 0
     penetration: 0
     projectileDuration: 1
+  DMGModPerRank: 70
 --- !u!212 &5866479890358183626
 SpriteRenderer:
   m_ObjectHideFlags: 0

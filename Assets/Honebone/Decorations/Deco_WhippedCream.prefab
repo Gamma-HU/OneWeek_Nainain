@@ -47,12 +47,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   decoStatus:
     decoName: "\u30DB\u30A4\u30C3\u30D7\u30AF\u30EA\u30FC\u30E0"
-    decoInfo: "\u901A\u5E38\u653B\u6483\u6642\u3001\u305F\u307E\u306B\u6575\u306E\u901F\u5EA6\u3092\u9045\u3089\u305B\u308B\u5F3E\u306B\u5909\u308F\u308B"
+    decoInfo: "\u901A\u5E38\u653B\u6483\u6642\u3001\u305F\u307E\u306B\u6575\u306E\u901F\u5EA6\u3092\u9045\u3089\u305B\u308B\u5F3E\u3092\u6483\u3061\u51FA\u3059\n\u30E9\u30F3\u30AF\u306B\u5FDC\u3058\u3066\u767A\u5C04\u78BA\u7387\u304C\u5897\u52A0"
     flavorText: 
     canStack: 0
     rank: 1
     rarity: 0
-  chance: 50
+  chance: 30
   attack:
     projectile: {fileID: 7663961578913621665, guid: 20bae1ef05f7766429129b04572bf260, type: 3}
     targetType: 0
@@ -68,6 +68,9 @@ MonoBehaviour:
     infinitePenetration: 0
     penetration: 0
     projectileDuration: 3
+  chancePerRank: 20
+  DMGModPerRank: 0
+  pelletPerRank: 0
 --- !u!212 &5866479890358183626
 SpriteRenderer:
   m_ObjectHideFlags: 0

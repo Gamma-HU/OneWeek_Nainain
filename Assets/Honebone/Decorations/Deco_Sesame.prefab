@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   decoStatus:
     decoName: "\u3054\u307E"
-    decoInfo: "\u901A\u5E38\u653B\u6483\u6642\u3001\u305F\u307E\u306B\u5927\u91CF\u306E\u3054\u307E\u3092\u6483\u3061\u51FA\u3059"
+    decoInfo: "\u901A\u5E38\u653B\u6483\u6642\u3001\u305F\u307E\u306B\u5927\u91CF\u306E\u3054\u307E\u3092\u6483\u3061\u51FA\u3059\n\u30E9\u30F3\u30AF\u306B\u5FDC\u3058\u3066\u6483\u3061\u51FA\u3059\u6570\u30681\u767A\u5F53\u305F\u308A\u306E\u5A01\u529B\u304C\u5897\u52A0"
     flavorText: 
     canStack: 0
     rank: 1
@@ -56,11 +56,11 @@ MonoBehaviour:
   attack:
     projectile: {fileID: 7663961578913621665, guid: 36a0f8857cba00744bf0c47f889b1492, type: 3}
     targetType: 0
-    DMGMod: 20
+    DMGMod: -75
     weight: 100
     followTargetSpeed: 0
     followCurrentTarget: 0
-    pellets: 10
+    pellets: 6
     fireRandomly: 0
     spread: 50
     equidistant: 0
@@ -68,6 +68,9 @@ MonoBehaviour:
     infinitePenetration: 0
     penetration: 0
     projectileDuration: 0.4
+  chancePerRank: 0
+  DMGModPerRank: 10
+  pelletPerRank: 2
 --- !u!212 &5866479890358183626
 SpriteRenderer:
   m_ObjectHideFlags: 0

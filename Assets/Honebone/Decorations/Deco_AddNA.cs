@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Deco_AddNA : Decoration
 {
-    [SerializeField] int chance;
-    [SerializeField] Attack attack;
+    [SerializeField, Header("追加攻撃を行う確率")] int chance;
+    [SerializeField, Header("追加攻撃の詳細")] Attack attack;
+    [SerializeField, Header("攻撃確率増加量/ランク")] int chancePerRank;
+    [SerializeField, Header("ダメージ補正値増加量/ランク")] int DMGModPerRank;
+    [SerializeField, Header("発射弾数増加量/ランク")] int pelletPerRank;
+
     //public override void OnInit()
     //{
     //    manju.AddNormalAttack(attack);
@@ -13,10 +17,13 @@ public class Deco_AddNA : Decoration
 
     public override void OnAttack(Honemy target, Attack atk, bool normalATK)
     {
-        if (normalATK&& chance.Dice())
+        Attack ATK = attack;
+        ATK.DMGMod += (decoStatus.rank-1) * DMGModPerRank;
+        ATK.pellets += (decoStatus.rank - 1) * pelletPerRank;
+        if (normalATK && (chance + chancePerRank * (decoStatus.rank - 1)).Dice())
         {
             Honemy tar = target;
-            switch (attack.targetType)
+            switch (ATK.targetType)
             {
                 case global::Attack.TargetType.randomTarget:
                     Debug.Log("これは一時的な処理です");
@@ -27,7 +34,7 @@ public class Deco_AddNA : Decoration
                     break;
             }
 
-            manju.Attack(tar, attack);
+            manju.Attack(tar, ATK);
         }
     }
 }
