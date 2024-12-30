@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class DecorationManager : MonoBehaviour
 {
-    // 
     public List<GameObject> decorations = new(); // 渡されたゲームオブジェクトを格納するリスト
     public List<GameObject> panels = new(); // 渡されたゲームオブジェクトをもとに生成したボタンを格納するリスト
     [SerializeField] GameObject viewContent;
@@ -18,6 +17,8 @@ public class DecorationManager : MonoBehaviour
         decorations.Add(decoration);
         GameObject panel = Instantiate(decolationPanel, viewContent.transform);
         panel.GetComponent<Image>().sprite = decoration.GetComponent<SpriteRenderer>().sprite; // ボタンの画像をゲームオブジェクトをもとに設定
+        panel.GetComponent<DecorationUI>().SetDeco(decoration.GetComponent<Decoration>()); // ボタンのDecorationUIにゲームオブジェクトのDecorationを設定
+        panel.GetComponent<DecorationUI>().SetSprite(decoration.GetComponent<SpriteRenderer>().sprite); // ボタンのDecorationUIにゲームオブジェクトのSpriteを設定
         panels.Add(panel);
         return decorations;
     }
