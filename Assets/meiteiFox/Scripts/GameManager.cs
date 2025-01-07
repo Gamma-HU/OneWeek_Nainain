@@ -6,6 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 using Unity.VisualScripting;
 using DG.Tweening;
 using UnityEditor.Tilemaps;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,13 +28,15 @@ public class GameManager : MonoBehaviour
     int currentWave;
     [SerializeField] GameObject[] EnemyPrefabs;
     [SerializeField] GameObject InfoCanvas;
+    GameObject InfoCanvasInst;
     bool IsSettingKurimanju = false;
     [SerializeField] GameObject highlightPanel;
     Vector2 nearestCellPos;
     float cellSize;
     Vector3 mousePosition;
     Vector2 gridOffset;
-    [SerializeField] Transform Map;
+    [SerializeField] GameObject Map;
+    [SerializeField] GameObject SinryakuStartButton;
     
     public static GameManager instance;
     public enum Phase
@@ -92,12 +95,12 @@ public class GameManager : MonoBehaviour
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
-                        int x = Math.Abs((int)((nearestCellPos.x - gridOffset.x - Map.localScale.x / 2) / cellSize));
-                        int y = Math.Abs((int)((nearestCellPos.y - gridOffset.y - Map.localScale.y / 2) / cellSize));
-                        Debug.Log(x.ToString());
-                        Debug.Log(y.ToString());
-
+                        int x = (int)(Mathf.Abs(nearestCellPos.x - Map.GetComponent<SpriteRenderer>().bounds.min.x) / (cellSize));
+                        int y = (int)(Mathf.Abs(nearestCellPos.y- Map.GetComponent<SpriteRenderer>().bounds.min.y) / (cellSize));
                         ManjuManager.instance.SpawnManju(new Vector2Int(x,y), new List<DecorationParams>(), 1);
+                        IsSettingKurimanju = false;
+                        InfoCanvasInst.SetActive(false);
+                        SinryakuStartButton.GetComponent<Button>().onClick.Invoke();
                     }
                 }
             }
@@ -161,8 +164,8 @@ public class GameManager : MonoBehaviour
     }
     void SetInitialKurimanju()
     {
-        GameObject infoCanvas = Instantiate(InfoCanvas);
-        infoCanvas.GetComponent<InfoCanvasController>().SetInfoString("最初に配置する自機の場所を選んでください");
+        InfoCanvasInst = Instantiate(InfoCanvas);
+        InfoCanvasInst.GetComponent<InfoCanvasController>().SetInfoString("最初に配置する自機の場所を選んでください");
         IsSettingKurimanju = true;
     }
     public void Sinryaku_Start()
