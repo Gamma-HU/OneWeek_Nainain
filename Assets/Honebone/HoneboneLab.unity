@@ -594,6 +594,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1448601915449164035, guid: f04907e95db367a44b33f200f5f6954b, type: 3}
   m_PrefabInstance: {fileID: 620728849}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &307838752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 190161824272118232, guid: 0c773cafd76b4504cadb90efbb3b23d8, type: 3}
+  m_PrefabInstance: {fileID: 1792623167}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330165986
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,7 +1311,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768147371}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.9794353, y: 0.06599034, z: -0.032668762}
+  m_LocalPosition: {x: -7.48, y: -4.24, z: -0.032668762}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1339,6 +1344,10 @@ MonoBehaviour:
   - {fileID: 209717703224128223, guid: 264aa924af02cca41ac441c06bb30a2f, type: 3}
   - {fileID: 8610369078158900284, guid: 5dc095c85cd71f4429902fcbf73e9e59, type: 3}
   - {fileID: 6759436560528683114, guid: 6698be8e2911fcf4688336bf9fa4a8d7, type: 3}
+  InfoCanvas: {fileID: 7110314677047182571, guid: ec325cd7f69aa3a49957d0d08650dda1, type: 3}
+  highlightPanel: {fileID: 7277899567404237176, guid: cdf54bd8e4ea3f14aa3391fea532d42c, type: 3}
+  Map: {fileID: 684263757}
+  SinryakuStartButton: {fileID: 307838752}
   currentPhase: 0
   decorationDataBase:
   - {fileID: 5302194670483044208, guid: a5e36f8a3474a844e90e8127ccd6069d, type: 3}

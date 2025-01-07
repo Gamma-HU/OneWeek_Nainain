@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using static UnityEngine.GraphicsBuffer;
-
+using Unity.VisualScripting;
+using DG.Tweening;
+using UnityEditor.Tilemaps;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,7 +27,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject[] WaveList;
     int currentWave;
     [SerializeField] GameObject[] EnemyPrefabs;
-
+    [SerializeField] GameObject InfoCanvas;
+    GameObject InfoCanvasInst;
+    bool IsSettingKurimanju = false;
+    [SerializeField] GameObject highlightPanel;
+    Vector2 nearestCellPos;
+    float cellSize;
+    Vector3 mousePosition;
+    Vector2 gridOffset;
+    [SerializeField] GameObject Map;
+    [SerializeField] GameObject SinryakuStartButton;
+    
     public static GameManager instance;
     public enum Phase
     {
@@ -62,6 +75,49 @@ public class GameManager : MonoBehaviour
         cell.Initialize(out cellInfo, out Route, TopLeft.position, BottomRight.position);
         Route = AddStartAndGoal(StartPos.position,GoalPos.position,Route);
         WaveStart(1);
+        highlightPanel = Instantiate(highlightPanel);
+        nearestCellPos = Vector2.zero;
+        cellSize = 0.94625f;
+        gridOffset = Map.transform.position;
+
+    }
+    private void Update()
+    {
+        // マウスのワールド座標を取得
+        mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        if (mousePosition.x > TopLeft.transform.position.x - cellSize/3 && mousePosition.x < BottomRight.transform.position.x + cellSize/3)
+        {
+            if (mousePosition.y < TopLeft.transform.position.y + cellSize/3 && mousePosition.y > BottomRight.transform.position.y - cellSize/3)
+            {
+                HighlightNearestCell();
+                if (IsSettingKurimanju)
+                {
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        int x = (int)(Mathf.Abs(nearestCellPos.x - Map.GetComponent<SpriteRenderer>().bounds.min.x) / (cellSize));
+                        int y = (int)(Mathf.Abs(nearestCellPos.y- Map.GetComponent<SpriteRenderer>().bounds.min.y) / (cellSize));
+                        ManjuManager.instance.SpawnManju(new Vector2Int(x,y), new List<DecorationParams>(), 1);
+                        IsSettingKurimanju = false;
+                        InfoCanvasInst.SetActive(false);
+                        SinryakuStartButton.GetComponent<Button>().onClick.Invoke();
+                    }
+                }
+            }
+        }
+    }
+    private void HighlightNearestCell()
+    {
+        // マウス位置に最も近いセルを計算
+        float nearestX = Mathf.Round((mousePosition.x - gridOffset.x) / cellSize) * cellSize + gridOffset.x;
+        float nearestY = Mathf.Round((mousePosition.y - gridOffset.y) / cellSize) * cellSize + gridOffset.y;
+
+        // ハイライトパネルをそのセルに移動
+        if (highlightPanel != null)
+        {
+            highlightPanel.transform.position = new Vector3(nearestX, nearestY, 0);
+        }
+        nearestCellPos = new Vector2(nearestX, nearestY);
     }
     /// <summary>
     /// ゲーム開始
@@ -101,6 +157,16 @@ public class GameManager : MonoBehaviour
         currentPhase = Phase.Preparation;
         currentWave = wave;
         //waveスタートのアニメーションもつけたい
+        if (currentWave == 1)
+        {
+            SetInitialKurimanju();
+        }
+    }
+    void SetInitialKurimanju()
+    {
+        InfoCanvasInst = Instantiate(InfoCanvas);
+        InfoCanvasInst.GetComponent<InfoCanvasController>().SetInfoString("最初に配置する自機の場所を選んでください");
+        IsSettingKurimanju = true;
     }
     public void Sinryaku_Start()
     {
