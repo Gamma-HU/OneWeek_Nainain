@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     Vector2 gridOffset;
     [SerializeField] GameObject Map;
     [SerializeField] GameObject SinryakuStartButton;
+    [SerializeField] GameObject RaycastTargetPanel;
     
     public static GameManager instance;
     public enum Phase
@@ -136,6 +137,7 @@ public class GameManager : MonoBehaviour
             ManjuManager.instance.StartBattle();
             currentPhase = Phase.Invasion;
             StartCoroutine(Invasion());
+            RaycastTargetPanel.SetActive(true);
             Debug.Log("Switched to Invasion Phase");
         }
         else
@@ -150,6 +152,7 @@ public class GameManager : MonoBehaviour
                 WaveStart(currentWave + 1);
             }
             Debug.Log("Switched to Preparation Phase");
+            RaycastTargetPanel.SetActive(false);
         }
     }
     public void WaveStart(int wave)
@@ -186,20 +189,20 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(enemyWaves[i].spawnSec);
             EnemyGen((int)enemyWaves[i].enemyType, enemyWaves[i].level);
         }
-        //TogglePhase();
         spawning = false;
     }
 
     public void EndWave()
     {
-        if (currentPhase == Phase.Invasion) { TogglePhase(); }
+        if (currentPhase == Phase.Invasion) { 
+            TogglePhase();
+            SinryakuStartButton.GetComponent<SinryakuStart>().SwitchText2();
+        }
     }
 
     void EnemyGen(int enemyIndex, int enemylevel)
     {
         GameObject enemy = Instantiate(EnemyPrefabs[enemyIndex], Route[0], Quaternion.identity);
-        //enemy.GetComponent<Enemy>().Route = Route;
-        //enemy.GetComponent<Enemy>().Level = enemylevel;
 
         enemy.GetComponent<Honemy>().Init(Route, enemylevel);
         enemies.Add(enemy.GetComponent<Honemy>());

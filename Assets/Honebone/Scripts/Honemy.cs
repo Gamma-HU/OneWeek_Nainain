@@ -10,10 +10,12 @@ public class Honemy : MonoBehaviour
     {
         public int maxHP;
         public float moveSpeed;
+        [HideInInspector]
         public float slowedSpeed;
         public float slowDuration;
 
         public bool dead;
+        [HideInInspector]
         public int HP;
 
         public void Init(int level)
@@ -27,7 +29,8 @@ public class Honemy : MonoBehaviour
     [SerializeField] GameObject particle_smoke;
     [SerializeField] ParticleSystem particle_slow;
     [SerializeField] GameObject canvas;
-    [SerializeField] Image HPBar; 
+    [SerializeField] Image HPBar;
+    [SerializeField] GameManager gameManager;
 
     float moveSpeed;
     bool slowed;

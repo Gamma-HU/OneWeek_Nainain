@@ -37,5 +37,24 @@ public class SinryakuStart : MonoBehaviour
             });
         });
     }
+    public void SwitchText2()
+    {
+        textRectTransform.DOLocalMoveX(290f, 0.5f).SetEase(Ease.OutExpo).OnComplete(() =>
+        {
+            textRectTransform.localPosition = new Vector3(-290f, 0f, 0f);
+            if (gameManager.currentPhase == GameManager.Phase.Invasion)
+            {
+                text.text = "侵略完了！";
+            }
+            else
+            {
+                text.text = "侵略開始！！";
+            }
+            textRectTransform.DOLocalMoveX(0f, 0.5f).SetEase(Ease.OutExpo).SetDelay(0.3f).OnComplete(() =>
+            {
+                Debug.Log("Switched Text");
+            });
+        });
+    }
 
 }

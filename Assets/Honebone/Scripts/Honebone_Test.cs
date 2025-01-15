@@ -10,7 +10,7 @@ public class Honebone_Test : MonoBehaviour
     [SerializeField] List<Vector2> manjuPos;
     [SerializeField] GameObject manju;
     [SerializeField] List<GameObject> equip;
-    [SerializeField] List<Enemy> enemyTest;
+    //[SerializeField] List<Enemy> enemyTest;
     [SerializeField] GraphicRaycaster raycaster;
     public static Honebone_Test instance;
 
@@ -31,10 +31,10 @@ public class Honebone_Test : MonoBehaviour
         //    majuList.Add(m.GetComponent<Kurimanju>());
         //}
 
-        foreach(Enemy enemy in enemyTest)
-        {
-            enemy.GetComponent<Honemy>().Init(null,1);
-        }
+        //foreach(Enemy enemy in enemyTest)
+        //{
+        //    enemy.GetComponent<Honemy>().Init(null,1);
+        //}
     }
     private void Update()
     {

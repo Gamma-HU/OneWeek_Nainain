@@ -50,4 +50,4 @@ MonoBehaviour:
     spawnSec: 0
   - enemyType: 0
     level: 1
-    spawnSec: 2
+    spawnSec: 3
