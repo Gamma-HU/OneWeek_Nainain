@@ -10,8 +10,5 @@ EditorBuildSettings:
     guid: 09c8af1595c1d13409997df36f5f0e11
   - enabled: 1
     path: Assets/meiteiFox/Scenes/GameScene.unity
-    guid: 7001360592466b04cb93383c43f63405
-  - enabled: 1
-    path: Assets/Magumaguro/Title/Kari/Kari.unity
-    guid: d243baf79e08c944a84cbf4acc9a610b
+    guid: c27ca1d49a9bcbd4c856509b08378a58
   m_configObjects: {}

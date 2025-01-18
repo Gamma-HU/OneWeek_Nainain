@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using DG.Tweening;
 using UnityEditor.Tilemaps;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform StartPos, GoalPos, TopLeft, BottomRight;
     [SerializeField] float GizmoSize;
     [SerializeField] GameObject[] WaveList;
-    int currentWave;
+    public int currentWave;
     [SerializeField] GameObject[] EnemyPrefabs;
     [SerializeField] GameObject InfoCanvas;
     GameObject InfoCanvasInst;
@@ -38,7 +39,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject Map;
     [SerializeField] GameObject SinryakuStartButton;
     [SerializeField] GameObject RaycastTargetPanel;
-    
+
+    public int Life;
+    [SerializeField] TextMeshProUGUI lifeText;
     public static GameManager instance;
     public enum Phase
     {
@@ -59,6 +62,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        Life = 10;
 
         for (int i = 0; i < Enum.GetNames(typeof(Decoration.DecoStatus.Rarity)).Length; i++)
         {
@@ -84,6 +88,8 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        //Lifeの値を更新
+        lifeText.text = Life.ToString();
         // マウスのワールド座標を取得
         mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -229,6 +235,15 @@ public class GameManager : MonoBehaviour
             return updatedTargets;
         }
     }
+    [SerializeField] GameObject GameOverPanel;
+    public void LifeDecrease()
+    {
+        Life--;
+        if (Life < 0)
+        {
+            GameOverPanel.SetActive(true);
+        }
+    }
     void OnDrawGizmos()
     {
         if (Route == null || Route.Length == 0)
@@ -238,7 +253,7 @@ public class GameManager : MonoBehaviour
         {
             // 正方形のギズモを描画
             Gizmos.color = Color.green;
-            GizmoSize = 0.5f;
+            GizmoSize = 0.48f;
             Gizmos.DrawLine(target + new Vector3(-GizmoSize, -GizmoSize, 0), target + new Vector3(GizmoSize, -GizmoSize, 0));
             Gizmos.DrawLine(target + new Vector3(GizmoSize, -GizmoSize, 0), target + new Vector3(GizmoSize, GizmoSize, 0));
             Gizmos.DrawLine(target + new Vector3(GizmoSize, GizmoSize, 0), target + new Vector3(-GizmoSize, GizmoSize, 0));
