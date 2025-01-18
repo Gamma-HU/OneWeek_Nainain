@@ -7,11 +7,16 @@ using UnityEngine.UI;
 
 public class DecorationManager : MonoBehaviour
 {
+    private void Awake()
+    {
+        instance = this;
+    }
     public List<GameObject> decorations = new(); // 渡されたゲームオブジェクトを格納するリスト
     public List<GameObject> panels = new(); // 渡されたゲームオブジェクトをもとに生成したボタンを格納するリスト
     [SerializeField] GameObject viewContent;
     [SerializeField] GameObject testPrefab;
     [SerializeField] GameObject decolationPanel; // ボタンのプレハブ
+    public static DecorationManager instance;
     public List<GameObject> AddDecolation(GameObject decoration)
     {
         decorations.Add(decoration);
@@ -29,14 +34,14 @@ public class DecorationManager : MonoBehaviour
         decorations.Remove(decoration);
         return decorations;
     }
-    [ContextMenu("AddTest")]
-    public void Test()
-    {
-        AddDecolation(Instantiate(testPrefab));
-    }
-    [ContextMenu("RemoveTest")]
-    public void Test2()
-    {
-        RemoveDecolation(decorations[0]);
-    }
+    //[ContextMenu("AddTest")]
+    //public void Test()
+    //{
+    //    AddDecolation(Instantiate(testPrefab));
+    //}
+    //[ContextMenu("RemoveTest")]
+    //public void Test2()
+    //{
+    //    RemoveDecolation(decorations[0]);
+    //}
 }

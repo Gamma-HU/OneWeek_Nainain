@@ -68,6 +68,7 @@ public class Honemy : MonoBehaviour
             Instantiate(particle_smoke, transform);
 
             GameManager.instance.RemoveEnemy(this);
+            DecorationManager.instance.AddDecolation(GameManager.instance.GetRandomDeco()); //ƒfƒR‚ð‚¨‚Æ‚·
             Destroy(gameObject,3f);
         }
         return status.HP <= 0;//‚±‚ÌUŒ‚‚ÅŽE‚µ‚½‚©‚ð•Ô‚·
@@ -88,9 +89,6 @@ public class Honemy : MonoBehaviour
     }
 
 
-
-
-    GameManager.EnemyType enemyType;
     public Vector3[] Route;
     //public float Speed;
     //public int Hp;
@@ -178,6 +176,7 @@ public class Honemy : MonoBehaviour
             {
                 Destroy(gameObject);
                 GameManager.instance.RemoveEnemy(this);
+                GameManager.instance.Life--;
             }
         }
         else
